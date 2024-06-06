@@ -13,6 +13,36 @@
     <artifactId>compiler</artifactId>
 
     <properties>
+        <junit.version>5.10.2</junit.version>
+        <maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
     </properties>
 
+    <dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.junit</groupId>
+				<artifactId>junit-bom</artifactId>
+				<version>${junit.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+    <dependencies>
+        <dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+    </dependencies>
+
+    <build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.plugin.version}</version>
+			</plugin>
+		</plugins>
+	</build>
 </project>

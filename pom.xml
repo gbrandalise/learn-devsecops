@@ -7,11 +7,18 @@
     <groupId>com.neo.learn</groupId>
     <artifactId>learn-devsecops</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <maven.compiler.release>21</maven.compiler.release>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
     </properties>
+
+    <modules>
+        <module>compiler</module>
+    </modules>
 
     <build>
         <pluginManagement>

@@ -1,10 +1,10 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
   "features": {
-    "ghcr.io/devcontainers-contrib/features/maven-sdkman:2": {
-      "version": "3.9.7",
-      "jdkVersion": "21",
-      "jdkDistro": "open"
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "21",
+      "jdkDistro": "open",
+      "installMaven": true
     }
   }
 }

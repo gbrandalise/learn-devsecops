@@ -1,0 +1,13 @@
+name: DevSecOps CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Resolve dependencies
+      run: BUILD_TARGET=dependency docker compose build

@@ -2,6 +2,6 @@ services:
   app:
     build:
       context: .
-      target: ${BUILD_TARGET:-application}
+      target: ${BUILD_TARGET}
     image: devsecops
     container_name: devsecops

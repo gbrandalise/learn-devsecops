@@ -15,3 +15,12 @@ jobs:
       
     - name: Compile sources
       run: BUILD_TARGET=compile docker compose build
+      
+    - name: Tests
+      run: BUILD_TARGET=test docker compose build
+      
+    - name: Package
+      run: BUILD_TARGET=package docker compose build
+      
+    - name: Docker Image
+      run: docker compose build

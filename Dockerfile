@@ -17,14 +17,14 @@ RUN mvn clean compile
 FROM compile as test
 RUN mvn test
 
-FROM compile as build
+FROM compile as package
 RUN mvn package
 
-FROM openjdk:21-slim as application
+FROM openjdk:21-slim
 RUN addgroup --system devsecops 
 RUN adduser --system devsecops --ingroup devsecops
 WORKDIR /app
 RUN chown -R devsecops:devsecops /app
 USER devsecops
-COPY --chown=devsecops:devsecops --from=build /app/compiler/target/*.jar ./app.jar
+COPY --chown=devsecops:devsecops --from=package /app/compiler/target/*.jar ./app.jar
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

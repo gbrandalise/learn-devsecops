@@ -3,5 +3,5 @@ services:
     build:
       context: .
       target: ${BUILD_TARGET}
-    image: devsecops
+    image: learn-devsecops
     container_name: devsecops

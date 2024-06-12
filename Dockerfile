@@ -18,7 +18,7 @@ FROM compile as test
 RUN mvn test
 
 FROM compile as package
-RUN mvn package
+RUN mvn package -DskipTests -Dmaven.test.skip=true
 
 FROM openjdk:21-slim
 RUN addgroup --system devsecops 

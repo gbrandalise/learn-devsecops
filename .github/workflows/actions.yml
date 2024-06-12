@@ -5,13 +5,19 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  checkout:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
 
+  dependency:
+    runs-on: ubuntu-latest
+    steps:
     - name: Resolve dependencies
       run: BUILD_TARGET=dependency docker compose build
 
-    - name: Compile
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Compile sources
       run: BUILD_TARGET=compile docker compose build

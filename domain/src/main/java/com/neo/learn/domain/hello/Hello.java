@@ -1,4 +1,4 @@
-package com.neo.learn.helloworld;
+package com.neo.learn.domain.hello;
 
 public class Hello {
 

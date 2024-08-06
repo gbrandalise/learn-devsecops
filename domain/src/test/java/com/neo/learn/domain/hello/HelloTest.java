@@ -1,4 +1,4 @@
-package com.neo.learn.helloworld;
+package com.neo.learn.domain.hello;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;

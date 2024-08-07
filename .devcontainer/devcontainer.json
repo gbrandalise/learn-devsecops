@@ -1,11 +1,11 @@
 {
 	"name": "Learn DevSecOps - Java 21",
 	"dockerComposeFile": [
-		"../compose.yml",
+		"../app/compose.yml",
 		"compose.yml"
 	],
 	"service": "app",
-	"workspaceFolder": "/app",
+	"workspaceFolder": "/devsecops",
 	"customizations": {
 		"vscode": {
 			"extensions": [

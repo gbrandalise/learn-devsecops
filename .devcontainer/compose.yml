@@ -2,8 +2,8 @@ services:
   app:
     build: 
       context: .
-      dockerfile: .devcontainer/Dockerfile
+      dockerfile: ../.devcontainer/Dockerfile
     ports:
       - 8080:8080
     volumes:
-      - .:/app:cached
+      - ..:/devsecops:cached

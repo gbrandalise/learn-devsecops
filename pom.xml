@@ -20,6 +20,7 @@
     <modules>
         <module>domain</module>
         <module>application</module>
+        <module>presentation</module>
     </modules>
 
     <build>

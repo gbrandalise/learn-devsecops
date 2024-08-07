@@ -12,7 +12,8 @@
 				"vscjava.vscode-java-pack",
 				"vscjava.vscode-lombok",
 				"ms-azuretools.vscode-docker",
-				"editorconfig.editorconfig"
+				"editorconfig.editorconfig",
+				"vmware.vscode-boot-dev-pack"
 			]
 		}
 	},

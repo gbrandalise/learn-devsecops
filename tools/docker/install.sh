@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get remove \
+sudo apt-get remove \
 	docker.io \
 	docker-doc \
 	docker-compose \
@@ -9,7 +9,9 @@ apt-get remove \
 	containerd \
 	runc && \
 curl -fsSL https://get.docker.com -o get-docker.sh && \
-sh ./get-docker.sh --dry-run && \
-systemctl enable docker.service && \
-systemctl enable containerd.service && \
+sudo sh ./get-docker.sh --dry-run && \
+sudo service docker restart && \
+sudo groupadd docker && \
+sudo usermod -aG docker $USER && \
+sudo newgrp docker && \
 docker version

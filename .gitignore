@@ -28,3 +28,6 @@ target/
 
 # K8s
 kubectl*
+
+# Docker
+get-docker.sh

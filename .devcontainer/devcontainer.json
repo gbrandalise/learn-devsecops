@@ -6,6 +6,7 @@
 	],
 	"service": "app",
 	"workspaceFolder": "/devsecops",
+	"overrideCommand": false,
 	"customizations": {
 		"vscode": {
 			"extensions": [

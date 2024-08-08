@@ -6,6 +6,4 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ..:/devsecops:cached
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
+      - .:/devsecops:cached

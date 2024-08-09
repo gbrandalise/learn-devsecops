@@ -15,7 +15,8 @@
 				"vscjava.vscode-lombok",
 				"ms-azuretools.vscode-docker",
 				"editorconfig.editorconfig",
-				"vmware.vscode-boot-dev-pack"
+				"vmware.vscode-boot-dev-pack",
+				"ms-kubernetes-tools.vscode-kubernetes-tools"
 			]
 		}
 	},

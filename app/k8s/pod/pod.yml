@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devsecops
+spec:
+  containers:
+    - name: web
+      image: ghcr.io/gbrandalise/learn-devsecops:latest
+      ports:
+      - containerPort: 8080

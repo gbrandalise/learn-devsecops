@@ -26,9 +26,5 @@ replay_pid*
 # Maven
 target/
 
-# K8s
-kubectl*
-!**/kubectl/
-
 # Docker
 get-docker.sh

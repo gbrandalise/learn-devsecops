@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.7-labs
 FROM maven:3-eclipse-temurin-21-alpine as dependency
-RUN addgroup --system devsecops 
+RUN addgroup --system devsecops
 RUN adduser --system devsecops --ingroup devsecops
 WORKDIR /app
 RUN chown -R devsecops:devsecops /app
@@ -21,7 +21,7 @@ FROM compile as package
 RUN mvn package -DskipTests -Dmaven.test.skip=true
 
 FROM openjdk:21-slim
-RUN addgroup --system devsecops 
+RUN addgroup --system devsecops
 RUN adduser --system devsecops --ingroup devsecops
 WORKDIR /app
 RUN chown -R devsecops:devsecops /app

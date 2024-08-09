@@ -16,10 +16,9 @@ jobs:
 
     - name: Resolve dependencies
       uses: docker/build-push-action@v6
-      env:
-        BUILD_TARGET: dependency
       with:
         context: "{{defaultContext}}:app"
+        target: dependency
 
   compile:
     runs-on: ubuntu-latest

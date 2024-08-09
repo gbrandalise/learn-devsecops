@@ -1,0 +1,12 @@
+FROM docker:latest
+WORKDIR /devsecops
+
+COPY ./tools/ ./tools
+RUN apk update && apk add curl wget
+RUN ./tools/git/install-alpine.sh /devsecops
+RUN ./tools/java/jdk/install-alpine.sh
+RUN ./tools/maven/install-alpine.sh
+RUN ./tools/k8s/kubectl/install-alpine.sh
+RUN ./tools/k8s/k3d/install-alpine.sh
+
+EXPOSE 8080

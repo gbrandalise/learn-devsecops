@@ -1,6 +1,7 @@
 # Executar os seguintes comandos no PowerShell e reiniciar o Windows antes de instalar o WSL
 #Enable-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
 #Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
 $WSL_DISTRO = "Ubuntu"
 $WSLENV_VAR = (Get-ItemProperty $USER_VAR_REGISTRY).WSLENV
 if ("$WSLENV_VAR" -eq "") {

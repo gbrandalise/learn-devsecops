@@ -1,8 +1,7 @@
 services:
   app:
     build:
-      context: ..
-      dockerfile: ./app/Dockerfile
+      context: .
       target: ${BUILD_TARGET}
     image: learn-devsecops
     container_name: devsecops

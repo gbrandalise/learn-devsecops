@@ -6,7 +6,7 @@ WORKDIR /app
 RUN chown -R devsecops:devsecops /app
 USER devsecops
 # dockerfile-utils: ignore
-COPY --chown=devsecops:devsecops --parents pom.xml .**/pom.xml ./
+COPY --chown=devsecops:devsecops --parents pom.xml **/pom.xml ./
 RUN mvn dependency:go-offline
 
 FROM dependency as compile

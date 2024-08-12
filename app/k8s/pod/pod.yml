@@ -6,5 +6,6 @@ spec:
   containers:
     - name: api
       image: ghcr.io/gbrandalise/learn-devsecops:latest
+      imagePullPolicy: Always
       ports:
       - containerPort: 8080

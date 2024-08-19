@@ -14,16 +14,16 @@ class HelloTest {
 	}
 
 	@Test
-	void test_grettings_with_name() {
+	void test_greetings_with_name() {
 		var entity = new Hello();
-		var result = entity.grettings("Test");
+		var result = entity.greetings("Test");
 		assertEquals("Hello Test\n", result);
 	}
 
 	@Test
-	void test_grettings_with_null() {
+	void test_greetings_with_null() {
 		var entity = new Hello();
-		var result = entity.grettings(null);
+		var result = entity.greetings(null);
 		assertEquals("Hello null\n", result);
 	}
 

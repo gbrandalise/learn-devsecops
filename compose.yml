@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: ./app
+      target: ${BUILD_TARGET}
+    image: learn-devsecops
+    container_name: devsecops
+
+  prometheus:
+    image: prom/prometheus
+    container_name: devsecops-prometheus
+    ports:
+      - "39090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml

@@ -1,7 +1,0 @@
-services:
-  app:
-    build:
-      context: .
-      target: ${BUILD_TARGET}
-    image: learn-devsecops
-    container_name: devsecops

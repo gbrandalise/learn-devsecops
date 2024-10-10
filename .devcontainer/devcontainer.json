@@ -1,7 +1,7 @@
 {
 	"name": "Learn DevSecOps - Java 21",
 	"dockerComposeFile": [
-		"../app/compose.yml",
+		"../compose.yml",
 		"compose.yml"
 	],
 	"service": "app",

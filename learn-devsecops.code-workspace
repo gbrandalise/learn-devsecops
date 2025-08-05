@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"java.compile.nullAnalysis.mode": "disabled",
-		"java.configuration.runtimes": []
+		"java.configuration.runtimes": [],
+		"java.jdt.ls.java.home": "/opt/java/openjdk",
 	}
 }

@@ -1,13 +1,8 @@
 {
 	"name": "Learn DevSecOps - Java 21",
-	"dockerComposeFile": [
-		"../compose.yml",
-		"compose.yml"
-	],
-	"service": "app",
-	"workspaceFolder": "/devsecops",
-	"runArgs": ["--init", "--privileged"],
-	"overrideCommand": false,
+	"image": "ubuntu",
+	"privileged": true,
+	"runArgs": ["--name", "devsecops"],
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -21,9 +16,14 @@
 		}
 	},
 	"mounts": [
-		"type=bind,source=${localEnv:HOME}/.ssh,target=/root/.ssh,readonly"
+		{
+			"type": "bind",
+			"source": "${localEnv:HOME}/.ssh",
+			"target": "/root/.ssh"
+		}
 	],
 	"features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
-    }
+		"ghcr.io/devcontainers/features/git:1": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	}
 }

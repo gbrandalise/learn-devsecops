@@ -1,5 +1,5 @@
 {
-	"name": "Learn DevSecOps - Java 21",
+	"name": "Learn DevSecOps - Docker/Kind/Java 21",
 	"image": "ubuntu",
 	"privileged": true,
 	"runArgs": ["--name", "devsecops"],
@@ -25,7 +25,14 @@
 	],
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"installDockerBuildx": true,
+			"enableNonRootDocker": true,
+			"moby": false
+		},
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+			"minikube": "none"
+		},
 		"ghcr.io/devcontainers-extra/features/kind:1": {},
     	"ghcr.io/devcontainers/features/java:1": {
 			"version": 21,

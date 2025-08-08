@@ -3,9 +3,5 @@
 		{
 			"path": "."
 		}
-	],
-	"settings": {
-		"java.compile.nullAnalysis.mode": "disabled",
-		"java.jdt.ls.java.home": "/usr/local/sdkman/candidates/java/current",
-	}
+	]
 }

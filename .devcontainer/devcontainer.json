@@ -2,16 +2,20 @@
 	"name": "Learn DevSecOps - Docker/Kind/Java 21",
 	"image": "ubuntu",
 	"privileged": true,
-	"runArgs": ["--name", "devsecops"],
+	"runArgs": ["--name=devsecops"],
 	"customizations": {
 		"vscode": {
+			"settings": {
+				"java.compile.nullAnalysis.mode": "disabled",
+				"java.jdt.ls.java.home": "/usr/local/sdkman/candidates/java/current"
+			},
 			"extensions": [
+				"ms-azuretools.vscode-docker",
+				"ms-kubernetes-tools.vscode-kubernetes-tools",
 				"vscjava.vscode-java-pack",
 				"vscjava.vscode-lombok",
-				"ms-azuretools.vscode-docker",
 				"editorconfig.editorconfig",
-				"vmware.vscode-boot-dev-pack",
-				"ms-kubernetes-tools.vscode-kubernetes-tools"
+				"vmware.vscode-boot-dev-pack"
 			]
 		}
 	},
@@ -27,7 +31,6 @@
 		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {
 			"installDockerBuildx": true,
-			"enableNonRootDocker": true,
 			"moby": false
 		},
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
@@ -39,5 +42,12 @@
 			"jdkDistro": "tem",
 			"installMaven": true
 		}
-	}
+	},
+	"overrideFeatureInstallOrder": [
+		"ghcr.io/devcontainers/features/git",
+		"ghcr.io/devcontainers/features/docker-in-docker",
+		"ghcr.io/devcontainers/features/kubectl-helm-minikube",
+		"ghcr.io/devcontainers-extra/features/kind",
+		"ghcr.io/devcontainers/features/java"
+	]
 }

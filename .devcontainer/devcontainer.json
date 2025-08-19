@@ -15,7 +15,8 @@
 				"vscjava.vscode-java-pack",
 				"vscjava.vscode-lombok",
 				"editorconfig.editorconfig",
-				"vmware.vscode-boot-dev-pack"
+				"vmware.vscode-boot-dev-pack",
+				"codium.codium"
 			]
 		}
 	},

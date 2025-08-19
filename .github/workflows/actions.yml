@@ -90,5 +90,5 @@ jobs:
       with:
         context: "{{defaultContext}}:app"
         push: true
-        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:pt
+        tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
         labels: ${{ steps.meta.outputs.labels }}

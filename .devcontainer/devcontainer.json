@@ -24,7 +24,7 @@
 	"mounts": [
 		{
 			"type": "bind",
-			"source": "${localEnv:HOME}/.ssh",
+			"source": "/home/ubuntu/.ssh",
 			"target": "/root/.ssh"
 		}
 	],
@@ -50,5 +50,6 @@
 		"ghcr.io/devcontainers/features/kubectl-helm-minikube",
 		"ghcr.io/devcontainers-extra/features/kind",
 		"ghcr.io/devcontainers/features/java"
-	]
+	],
+    "postCreateCommand": "apt-get update && apt-get install openssh-client -y"
 }

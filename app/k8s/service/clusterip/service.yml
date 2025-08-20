@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: ghcr.io/gbrandalise/learn-devsecops:v1
+          image: ghcr.io/gbrandalise/learn-devsecops:latest
           imagePullPolicy: Always
           ports:
           - containerPort: 8080
@@ -28,5 +28,5 @@ spec:
     app: api
   ports:
   - port: 8080
-    targetPort: 30000
+    targetPort: 8080
   type: ClusterIP

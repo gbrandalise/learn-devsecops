@@ -6,7 +6,11 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.neo.learn.presentation/com.neo.learn.presentation.LearnDevSecOpsApplication",
-            "projectName": "presentation"
+            "projectName": "presentation",
+			"console": "internalConsole",
+			"env": {
+				"GREETINGS_MESSAGE": "Hello %s"
+			}
         }
     ]
 }

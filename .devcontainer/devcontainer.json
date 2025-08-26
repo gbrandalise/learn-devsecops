@@ -8,6 +8,26 @@
 			"settings": {
 				"java.compile.nullAnalysis.mode": "disabled",
 				"java.jdt.ls.java.home": "/usr/local/sdkman/candidates/java/current",
+				"java.completion.favoriteStaticMembers": [
+					"org.junit.Assert.*",
+					"org.junit.Assume.*",
+					"org.junit.jupiter.api.Assertions.*",
+					"org.junit.jupiter.api.Assumptions.*",
+					"org.junit.jupiter.api.DynamicContainer.*",
+					"org.junit.jupiter.api.DynamicTest.*",
+					"org.mockito.Mockito.*",
+					"org.mockito.ArgumentMatchers.*",
+					"org.mockito.Answers.*",
+					"org.springframework.test.web.servlet.setup.MockMvcBuilders.*",
+					"org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*",
+					"org.springframework.test.web.servlet.result.MockMvcResultMatchers.*",
+					"org.springframework.test.web.servlet.result.MockMvcResultHandlers.*"
+				],
+				"java.test.config": {
+					"vmArgs": [
+						"-javaagent:/root/.m2/repository/org/mockito/mockito-core/5.17.0/mockito-core-5.17.0.jar"
+					]
+				},
 				"codium.codeCompletion.enable": true
 			},
 			"extensions": [

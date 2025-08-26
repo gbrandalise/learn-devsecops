@@ -15,5 +15,6 @@ module com.neo.learn.presentation {
 	exports com.neo.learn.presentation.hello;
 
 	opens com.neo.learn.presentation to spring.core;
+	opens com.neo.learn.presentation.hello to spring.core;
 
 }

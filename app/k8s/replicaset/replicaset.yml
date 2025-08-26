@@ -13,8 +13,11 @@ spec:
         app: api
     spec:
       containers:
-        - name: api
-          image: ghcr.io/gbrandalise/learn-devsecops:latest
-          imagePullPolicy: Always
-          ports:
-          - containerPort: 8080
+      - name: api
+        image: ghcr.io/gbrandalise/learn-devsecops:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: GREETINGS_MESSAGE
+          value: "Hello %s\n"

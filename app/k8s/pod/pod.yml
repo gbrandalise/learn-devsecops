@@ -21,3 +21,6 @@ spec:
       imagePullPolicy: Always
       ports:
       - containerPort: 8080
+      env:
+      - name: GREETINGS_MESSAGE
+        value: "Hello %s\n"

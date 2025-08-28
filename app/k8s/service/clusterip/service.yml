@@ -20,7 +20,7 @@ spec:
         - containerPort: 8080
         env:
         - name: GREETINGS_MESSAGE
-          value: "Hello %s\n"
+          value: "Hello %s"
 ---
 apiVersion: v1
 kind: Service

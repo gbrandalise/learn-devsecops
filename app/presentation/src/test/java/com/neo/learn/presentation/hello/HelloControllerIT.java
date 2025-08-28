@@ -24,7 +24,7 @@ class HelloControllerIT {
 				.andReturn()
 				.getResponse()
 				.getContentAsString();
-		assertEquals("Hello %s\n".formatted(name), result);
+		assertEquals("Hello %s".formatted(name), result);
 	}
 
 }

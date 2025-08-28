@@ -75,5 +75,5 @@
 		"ghcr.io/devcontainers-extra/features/kind",
 		"ghcr.io/devcontainers/features/java"
 	],
-    "postCreateCommand": "apt-get update && apt-get install openssh-client -y"
+    "postCreateCommand": "apt-get update && apt-get install openssh-client gettext --no-install-recommends -y"
 }

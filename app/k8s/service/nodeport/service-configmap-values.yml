@@ -18,9 +18,12 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
-        envFrom:
-        - configMapRef:
-            name: devsecops-configmap
+        env:
+        - name: GREETINGS_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: devsecops-configmap
+              key: GREETINGS_MESSAGE
 ---
 apiVersion: v1
 kind: Service

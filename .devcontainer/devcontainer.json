@@ -31,7 +31,11 @@
 						 "--add-opens", "java.base/java.lang.invoke=ALL-UNNAMED"
 					]
 				},
-				"codium.codeCompletion.enable": true
+				"codium.codeCompletion.enable": true,
+				"codium.customInstructions.allMessages": "Responda sempre em português do Brasil (pt-BR)",
+				"codium.customInstructions.specificCommands": {
+					"commit": "Gere a mensagem em português do Brasil (pt-BR), usando Conventional Commits"
+				}
 			},
 			"extensions": [
 				"ms-azuretools.vscode-docker",

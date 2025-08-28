@@ -19,8 +19,8 @@ spec:
         ports:
         - containerPort: 8080
         envFrom:
-        - configMapRef:
-            name: devsecops-configmap
+        - secretRef:
+            name: devsecops-secret
 ---
 apiVersion: v1
 kind: Service

@@ -9,10 +9,11 @@ module com.neo.learn.presentation {
 
 	requires java.instrument;
 
-    requires com.neo.learn.application;
+	requires lombok;
 
-	exports com.neo.learn.presentation;
-	exports com.neo.learn.presentation.hello;
+    requires com.neo.learn.domain;
+    requires com.neo.learn.application;
+	requires com.neo.learn.infrastructure;
 
 	opens com.neo.learn.presentation to spring.core;
 	opens com.neo.learn.presentation.hello to spring.core;

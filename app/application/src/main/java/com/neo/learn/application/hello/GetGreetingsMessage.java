@@ -1,12 +1,16 @@
 package com.neo.learn.application.hello;
 
+import com.neo.learn.application.UseCase;
 import com.neo.learn.domain.hello.Hello;
 
-public class GetGreetingsMessage {
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
-	public String process(String name) {
-		var hello = new Hello();
-		return hello.greetings(name);
+@RequiredArgsConstructor
+class GetGreetingsMessage implements UseCase<GreetingsMessageRequest, GreetingsMessageResponse> {
+
+	public GreetingsMessageResponse process(@NonNull GreetingsMessageRequest request) {
+		return new GreetingsMessageResponse(Hello.greetings(request.name()));
 	}
 
 }

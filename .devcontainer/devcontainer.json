@@ -8,6 +8,7 @@
 			"settings": {
 				"java.compile.nullAnalysis.mode": "disabled",
 				"java.jdt.ls.java.home": "/usr/local/sdkman/candidates/java/current",
+				"java.configuration.updateBuildConfiguration": "automatic",
 				"java.completion.favoriteStaticMembers": [
 					"org.junit.Assert.*",
 					"org.junit.Assume.*",
@@ -34,7 +35,7 @@
 				"codium.codeCompletion.enable": true,
 				"codium.customInstructions.allMessages": "Responda sempre em português do Brasil (pt-BR)",
 				"codium.customInstructions.specificCommands": {
-        			"commit": "Gere sempre a mensagem em português do Brasil (pt-BR), usando Conventional Commits"
+        			"commit": "Gere sempre a mensagem em português do Brasil (pt-BR)"
 				}
 			},
 			"extensions": [
@@ -54,6 +55,11 @@
 			"type": "bind",
 			"source": "/home/ubuntu/.ssh",
 			"target": "/root/.ssh"
+		},
+		{
+			"type": "bind",
+			"source": "/home/ubuntu/.m2",
+			"target": "/root/.m2"
 		}
 	],
 	"features": {

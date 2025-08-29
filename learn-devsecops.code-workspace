@@ -5,6 +5,7 @@
 		}
 	],
 	"settings": {
-		"codium.codeCompletion.enable": true
+		"codium.codeCompletion.enable": true,
+		"java.configuration.updateBuildConfiguration": "automatic"
 	}
 }

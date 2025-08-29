@@ -2,7 +2,10 @@ package com.neo.learn.domain.hello;
 
 import java.util.Optional;
 
+import com.neo.learn.domain.mapstruct.Default;
+
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -14,8 +17,10 @@ public class Hello {
 	@Getter
 	private Long id;
 	@Getter
-	private final String name;
+	@NonNull
+	private String name;
 
+	@Default
 	public Hello(Long id, String name) {
 		this(name);
 		this.id = id;

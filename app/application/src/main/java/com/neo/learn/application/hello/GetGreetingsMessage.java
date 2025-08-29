@@ -7,7 +7,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-class GetGreetingsMessage implements UseCase<GreetingsMessageRequest, GreetingsMessageResponse> {
+public class GetGreetingsMessage implements UseCase<GreetingsMessageRequest, GreetingsMessageResponse> {
 
 	public GreetingsMessageResponse process(@NonNull GreetingsMessageRequest request) {
 		return new GreetingsMessageResponse(Hello.greetings(request.name()));

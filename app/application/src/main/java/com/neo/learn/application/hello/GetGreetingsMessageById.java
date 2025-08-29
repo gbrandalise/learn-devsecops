@@ -6,7 +6,7 @@ import com.neo.learn.domain.hello.Hello;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-class GetGreetingsMessageById implements UseCase<GreetingsMessageByIdRequest, GreetingsMessageResponse> {
+public class GetGreetingsMessageById implements UseCase<GreetingsMessageByIdRequest, GreetingsMessageResponse> {
 
 	private final HelloRepository repository;
 

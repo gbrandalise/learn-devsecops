@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.neo.learn</groupId>
 		<artifactId>learn-devsecops</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${revision}</version>
 	</parent>
 
 	<groupId>com.neo.learn</groupId>

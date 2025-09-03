@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-          <groupId>com.neo.learn</groupId>
-          <artifactId>learn-devsecops</artifactId>
-          <version>0.0.1-SNAPSHOT</version>
+		<groupId>com.neo.learn</groupId>
+		<artifactId>learn-devsecops</artifactId>
+		<version>${revision}</version>
     </parent>
 
     <groupId>com.neo.learn</groupId>
@@ -22,7 +22,7 @@
 		<dependency>
 			<groupId>com.neo.learn</groupId>
 			<artifactId>domain</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${revision}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

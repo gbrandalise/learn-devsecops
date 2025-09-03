@@ -1,4 +1,4 @@
-package com.neo.learn.infrastructure.jpa.hello;
+package com.neo.learn.infrastructure.hello.jpa;
 
 import com.neo.learn.domain.mapstruct.Default;
 
@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @RequiredArgsConstructor
 @NoArgsConstructor
-class HelloJpaEntity {
+public class HelloJpaEntity {
 
 	@Id
 	private Long id;

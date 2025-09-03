@@ -24,5 +24,6 @@ module com.neo.learn.infrastructure {
     requires com.neo.learn.application;
 
 	opens com.neo.learn.infrastructure to spring.core, spring.context, spring.beans;
-	opens com.neo.learn.infrastructure.jpa.hello;
+	opens com.neo.learn.infrastructure.hello to spring.core;
+	opens com.neo.learn.infrastructure.hello.jpa to spring.core, spring.context, spring.beans, spring.aop, org.mapstruct, org.hibernate.orm.core;
 }

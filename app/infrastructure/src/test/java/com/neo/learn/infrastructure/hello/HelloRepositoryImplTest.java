@@ -1,4 +1,4 @@
-package com.neo.learn.infrastructure.jpa.hello;
+package com.neo.learn.infrastructure.hello;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -20,6 +20,9 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataAccessResourceFailureException;
 
 import com.neo.learn.domain.hello.Hello;
+import com.neo.learn.infrastructure.hello.jpa.HelloJpaEntity;
+import com.neo.learn.infrastructure.hello.jpa.HelloJpaRepository;
+import com.neo.learn.infrastructure.hello.jpa.HelloMapper;
 
 @ExtendWith(MockitoExtension.class)
 class HelloRepositoryImplTest {

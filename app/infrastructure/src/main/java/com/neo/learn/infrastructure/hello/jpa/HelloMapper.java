@@ -1,4 +1,4 @@
-package com.neo.learn.infrastructure.jpa.hello;
+package com.neo.learn.infrastructure.hello.jpa;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -6,7 +6,7 @@ import org.mapstruct.factory.Mappers;
 import com.neo.learn.domain.hello.Hello;
 
 @Mapper(componentModel = "spring")
-interface HelloMapper {
+public interface HelloMapper {
 
 	HelloMapper INSTANCE = Mappers.getMapper(HelloMapper.class);
 

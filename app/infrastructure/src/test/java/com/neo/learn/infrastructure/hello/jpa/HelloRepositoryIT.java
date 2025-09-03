@@ -1,4 +1,4 @@
-package com.neo.learn.infrastructure.jpa.hello;
+package com.neo.learn.infrastructure.hello.jpa;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

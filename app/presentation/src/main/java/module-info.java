@@ -1,7 +1,5 @@
 module com.neo.learn.presentation {
 
-	requires java.instrument;
-
 	requires spring.boot;
 	requires spring.boot.autoconfigure;
     requires spring.context;
@@ -15,9 +13,7 @@ module com.neo.learn.presentation {
     requires com.neo.learn.application;
 	requires com.neo.learn.infrastructure;
 
-	exports com.neo.learn.presentation;
-
-	opens com.neo.learn.presentation to spring.core;
-	opens com.neo.learn.presentation.hello to spring.core, spring.beans, spring.web;
+	opens com.neo.learn.presentation to spring.core, spring.context, spring.beans;
+	opens com.neo.learn.presentation.hello to spring.core, spring.context, spring.beans;
 
 }

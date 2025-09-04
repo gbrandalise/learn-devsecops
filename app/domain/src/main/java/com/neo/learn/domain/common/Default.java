@@ -1,4 +1,4 @@
-package com.neo.learn.domain.mapstruct;
+package com.neo.learn.domain.common;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

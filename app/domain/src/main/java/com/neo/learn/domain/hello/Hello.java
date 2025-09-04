@@ -2,7 +2,7 @@ package com.neo.learn.domain.hello;
 
 import java.util.Optional;
 
-import com.neo.learn.domain.mapstruct.Default;
+import com.neo.learn.domain.common.Default;
 
 import lombok.Getter;
 import lombok.NonNull;

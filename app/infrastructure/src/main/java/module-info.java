@@ -2,28 +2,24 @@ module com.neo.learn.infrastructure {
 
 	requires java.compiler;
 
-	requires jakarta.persistence;
+	requires lombok;
+
+	requires transitive org.mapstruct;
+
+	requires transitive jakarta.persistence;
 
 	requires spring.boot;
 	requires spring.boot.autoconfigure;
-    requires spring.context;
-	requires spring.core;
-    requires spring.beans;
-	requires spring.data.commons;
-	requires spring.data.jpa;
-	requires spring.tx;
-	requires spring.aop;
+    requires transitive spring.context;
+    requires transitive spring.beans;
+	requires transitive spring.data.jpa;
+	requires transitive spring.data.commons;
 
-	requires org.hibernate.orm.core;
+	requires transitive com.neo.learn.domain;
+    requires transitive com.neo.learn.application;
 
-	requires lombok;
+	opens com.neo.learn.infrastructure to spring.beans;
+	opens com.neo.learn.infrastructure.hello to spring.beans;
+	opens com.neo.learn.infrastructure.hello.jpa to org.mapstruct, spring.beans;
 
-	requires org.mapstruct;
-
-	requires com.neo.learn.domain;
-    requires com.neo.learn.application;
-
-	opens com.neo.learn.infrastructure to spring.core, spring.context, spring.beans;
-	opens com.neo.learn.infrastructure.hello to spring.core;
-	opens com.neo.learn.infrastructure.hello.jpa to spring.core, spring.context, spring.beans, spring.aop, org.mapstruct, org.hibernate.orm.core;
 }

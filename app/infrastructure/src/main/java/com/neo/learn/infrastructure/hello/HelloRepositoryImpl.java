@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
-class HelloRepositoryImpl implements HelloRepository {
+public class HelloRepositoryImpl implements HelloRepository {
 
 	private final HelloJpaRepository jpaRepository;
 	private final HelloMapper helloMapper;

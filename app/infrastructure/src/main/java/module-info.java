@@ -18,7 +18,7 @@ module com.neo.learn.infrastructure {
 	requires transitive com.neo.learn.domain;
     requires transitive com.neo.learn.application;
 
-	opens com.neo.learn.infrastructure to spring.beans;
+	opens com.neo.learn.infrastructure;
 	opens com.neo.learn.infrastructure.hello to spring.beans;
 	opens com.neo.learn.infrastructure.hello.jpa;
 

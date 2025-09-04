@@ -2,10 +2,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Spring Boot-LearnDevSecOpsApplication",
+            "name": "PresentationApplication",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "com.neo.learn.presentation/com.neo.learn.presentation.LearnDevSecOpsApplication",
+            "mainClass": "com.neo.learn.presentation/com.neo.learn.presentation.PresentationApplication",
             "projectName": "presentation",
 			"console": "internalConsole",
 			"env": {

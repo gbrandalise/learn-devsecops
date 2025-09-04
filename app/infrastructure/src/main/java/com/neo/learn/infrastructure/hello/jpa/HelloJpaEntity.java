@@ -1,6 +1,6 @@
 package com.neo.learn.infrastructure.hello.jpa;
 
-import com.neo.learn.domain.mapstruct.Default;
+import com.neo.learn.domain.common.Default;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

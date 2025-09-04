@@ -1,5 +1,6 @@
 package com.neo.learn.infrastructure;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
@@ -7,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class ApplicationIT {
+class InfrastructureApplicationIT {
 
 	@Autowired
-	Application app;
+	InfrastructureApplication app;
 
 	@Test
 	void testAppInstance() {
@@ -19,7 +20,7 @@ public class ApplicationIT {
 
 	@Test
 	void testMainCall() {
-		Application.main(new String[0]);
+		assertDoesNotThrow(() -> InfrastructureApplication.main(new String[0]));
 	}
 
 }

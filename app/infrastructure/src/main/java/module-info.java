@@ -22,4 +22,7 @@ module com.neo.learn.infrastructure {
 	opens com.neo.learn.infrastructure.hello to spring.beans;
 	opens com.neo.learn.infrastructure.hello.jpa;
 
+	exports com.neo.learn.infrastructure.hello;
+	exports com.neo.learn.infrastructure.hello.jpa;
+
 }

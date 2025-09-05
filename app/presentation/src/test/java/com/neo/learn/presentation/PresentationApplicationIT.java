@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LearnDevSecOpsApplicationIT {
+class PresentationApplicationIT {
 
 	@Autowired
-	LearnDevSecOpsApplication app;
+	PresentationApplication app;
 
 	@Test
 	void shouldCreateApplication() {
@@ -20,7 +20,7 @@ class LearnDevSecOpsApplicationIT {
 
 	@Test
 	void shouldStartApplication() {
-		assertDoesNotThrow(() -> LearnDevSecOpsApplication.main(new String[0]));
+		assertDoesNotThrow(() -> PresentationApplication.main(new String[0]));
 	}
 
 }

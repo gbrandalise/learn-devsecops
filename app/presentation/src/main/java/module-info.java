@@ -10,7 +10,7 @@ module com.neo.learn.presentation {
 
 	requires com.neo.learn.infrastructure;
 
-	opens com.neo.learn.presentation;
-	opens com.neo.learn.presentation.hello to spring.beans;
+	opens com.neo.learn.presentation to spring.beans;
+	opens com.neo.learn.presentation.hello to spring.beans, spring.web;
 
 }

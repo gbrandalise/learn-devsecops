@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication(scanBasePackages = "com.neo.learn")
 @EnableJpaRepositories(basePackages = "com.neo.learn")
 @EntityScan(basePackages = "com.neo.learn")
-public class PresentationApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PresentationApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

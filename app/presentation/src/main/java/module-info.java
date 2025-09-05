@@ -13,4 +13,6 @@ module com.neo.learn.presentation {
 	opens com.neo.learn.presentation to spring.beans;
 	opens com.neo.learn.presentation.hello to spring.beans, spring.web;
 
+	exports com.neo.learn.presentation;
+
 }

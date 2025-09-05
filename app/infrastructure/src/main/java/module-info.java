@@ -14,6 +14,7 @@ module com.neo.learn.infrastructure {
     requires transitive spring.beans;
 	requires transitive spring.data.commons;
 	requires transitive spring.data.jpa;
+	requires transitive org.hibernate.orm.core;
 
 	requires transitive com.neo.learn.domain;
     requires transitive com.neo.learn.application;

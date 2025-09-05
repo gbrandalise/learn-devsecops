@@ -2,10 +2,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "PresentationApplication",
+            "name": "Application",
             "request": "launch",
             "cwd": "${workspaceFolder}",
-            "mainClass": "com.neo.learn.presentation/com.neo.learn.presentation.PresentationApplication",
+            "mainClass": "com.neo.learn.presentation/com.neo.learn.presentation.Application",
             "projectName": "presentation",
 			"console": "internalConsole",
 			"env": {

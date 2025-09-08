@@ -15,7 +15,7 @@ COPY --chown=devsecops:devsecops --parents **/src ./
 RUN mvn clean compile
 
 FROM compile as test
-RUN mvn test
+RUN mvn verify
 
 FROM compile as package
 RUN mvn package -DskipTests -Dmaven.test.skip=true

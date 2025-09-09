@@ -18,7 +18,7 @@ FROM compile as test
 RUN mvn verify
 
 FROM compile as package
-RUN mvn package -DskipTests -Dmaven.test.skip=true
+RUN mvn install -DskipTests -Dmaven.test.skip=true
 
 FROM openjdk:21-slim
 RUN addgroup --system devsecops
@@ -26,5 +26,5 @@ RUN adduser --system devsecops --ingroup devsecops
 WORKDIR /app
 RUN chown -R devsecops:devsecops /app
 USER devsecops
-COPY --chown=devsecops:devsecops --from=package --exclude=*.original /app/presentation/target/*.jar ./app.jar
+COPY --chown=devsecops:devsecops --from=package /app/presentation/target/*.jar ./app.jar
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

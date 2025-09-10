@@ -27,4 +27,5 @@ WORKDIR /app
 RUN chown -R devsecops:devsecops /app
 USER devsecops
 COPY --chown=devsecops:devsecops --from=package /app/presentation/target/*.jar ./app.jar
+EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

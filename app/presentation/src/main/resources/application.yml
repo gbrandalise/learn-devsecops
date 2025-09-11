@@ -1,3 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${POSTGRES_HOST:localhost}:${POSTGRES_PORT:30001}/${POSTGRES_DB:devsecops}
+    username: ${POSTGRES_USER:devsecops}
+    password: ${POSTGRES_PASSWORD:devsecops}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+
 management:
   endpoints:
     web:

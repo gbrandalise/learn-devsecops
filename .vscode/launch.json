@@ -7,10 +7,7 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.neo.learn.presentation/com.neo.learn.presentation.Application",
             "projectName": "presentation",
-			"console": "internalConsole",
-			"env": {
-				"GREETINGS_MESSAGE": "Hello %s"
-			}
+			"console": "internalConsole"
         }
     ]
 }

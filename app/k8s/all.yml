@@ -4,9 +4,10 @@ metadata:
   name: devsecops-db
 type: Opaque
 data:
+  POSTGRES_HOST: ${POSTGRES_HOST}
+  POSTGRES_PORT: ${POSTGRES_PORT}
   POSTGRES_USER: ${POSTGRES_USER}
   POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-  POSTGRES_DB: ${POSTGRES_DB}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -42,4 +43,49 @@ spec:
     targetPort: 5432
     nodePort: 30001
   type: NodePort
-
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: devsecops-secret
+type: Opaque
+data:
+  GREETINGS_MESSAGE: ${GREETINGS_MESSAGE}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: ghcr.io/gbrandalise/learn-devsecops:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: devsecops-secret
+        - secretRef:
+            name: devsecops-db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: devsecops
+spec:
+  selector:
+    app: api
+  ports:
+  - port: 8080
+    nodePort: 30000
+  type: NodePort

@@ -9,6 +9,7 @@ spec:
       imagePullPolicy: Always
       ports:
       - containerPort: 8080
+  restartPolicy: OnFailure
 ---
 apiVersion: v1
 kind: Pod
@@ -16,11 +17,12 @@ metadata:
   name: devsecops-pt
 spec:
   containers:
-    - name: api
-      image: ghcr.io/gbrandalise/learn-devsecops:pt
-      imagePullPolicy: Always
-      ports:
-      - containerPort: 8080
-      env:
-      - name: GREETINGS_MESSAGE
-        value: "Hello %s"
+  - name: api
+    image: ghcr.io/gbrandalise/learn-devsecops:pt
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 8080
+    env:
+    - name: GREETINGS_MESSAGE
+      value: "Hello %s"
+  restartPolicy: OnFailure

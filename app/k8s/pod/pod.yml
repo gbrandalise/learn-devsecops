@@ -9,7 +9,11 @@ spec:
     imagePullPolicy: Always
     ports:
     - containerPort: 8080
-  restartPolicy: OnFailure
+    command:
+     - echo
+    args:
+    - "Hello World"
+  restartPolicy: Never
 ---
 apiVersion: v1
 kind: Pod

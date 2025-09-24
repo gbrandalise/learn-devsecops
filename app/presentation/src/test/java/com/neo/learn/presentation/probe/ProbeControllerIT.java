@@ -37,4 +37,22 @@ public class ProbeControllerIT {
 			.andExpect(jsonPath("$.status").value("DOWN"));
 	}
 
+	@Test
+	@SneakyThrows
+	void testReadinessUp() {
+		mockMvc.perform(get("/probe/readiness/up"));
+
+		mockMvc.perform(get("/actuator/health/readiness"))
+			.andExpect(jsonPath("$.status").value("UP"));
+	}
+
+	@Test
+	@SneakyThrows
+	void testReadinessDown() {
+		mockMvc.perform(get("/probe/readiness/down"));
+
+		mockMvc.perform(get("/actuator/health/readiness"))
+			.andExpect(jsonPath("$.status").value("OUT_OF_SERVICE"));
+	}
+
 }

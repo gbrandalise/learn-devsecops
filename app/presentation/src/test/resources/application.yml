@@ -1,6 +1,3 @@
-server:
-  port: 8001
-
 spring:
   datasource:
     url: jdbc:h2:mem:devsecops
@@ -17,3 +14,13 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      probes:
+        enabled: true

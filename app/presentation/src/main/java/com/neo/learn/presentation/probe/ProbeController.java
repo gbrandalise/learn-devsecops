@@ -17,13 +17,13 @@ public class ProbeController {
 	private final ApplicationEventPublisher publisher;
 
 	@GetMapping("liveness/down")
-	public String down() {
+	public String livenessDown() {
 		AvailabilityChangeEvent.publish(publisher, this, LivenessState.BROKEN);
 		return "/probes.html";
 	}
 
 	@GetMapping("liveness/up")
-	public String up() {
+	public String livenessUp() {
 		AvailabilityChangeEvent.publish(publisher, this, LivenessState.CORRECT);
 		return "/probes.html";
 	}

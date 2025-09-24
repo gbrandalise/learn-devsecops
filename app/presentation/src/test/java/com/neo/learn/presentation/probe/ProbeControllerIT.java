@@ -21,7 +21,7 @@ public class ProbeControllerIT {
 
 	@Test
 	@SneakyThrows
-	void testUp() {
+	void testLivenessUp() {
 		mockMvc.perform(get("/probe/liveness/up"));
 
 		mockMvc.perform(get("/actuator/health/liveness"))
@@ -30,7 +30,7 @@ public class ProbeControllerIT {
 
 	@Test
 	@SneakyThrows
-	void testDown() {
+	void testLivenessDown() {
 		mockMvc.perform(get("/probe/liveness/down"));
 
 		mockMvc.perform(get("/actuator/health/liveness"))

@@ -94,9 +94,12 @@ spec:
       labels:
         app: api
     spec:
+      #imagePullSecrets:
+      #  - name: docker-hub-auth
       containers:
       - name: api
         image: ghcr.io/gbrandalise/learn-devsecops:latest
+        #image: gigiobr/learn-devsecops:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export NAMESPACE="development" && \
-export POSTGRES_HOST=$(echo -n "postgresql.development-db.svc.cluster.local" | base64) && \
+export POSTGRES_HOST=$(echo -n "postgresql" | base64) && \
 export POSTGRES_PORT=$(echo -n "5432" | base64) && \
 export POSTGRES_DB=$(echo -n "devsecops" | base64) && \
 export POSTGRES_USER=$(echo -n "devsecops" | base64) && \

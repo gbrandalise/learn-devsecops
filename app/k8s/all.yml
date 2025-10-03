@@ -164,6 +164,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: postgresql
+  namespace: ${NAMESPACE}-app
+spec:
+  type: ExternalName
+  externalName: postgresql.development-db.svc.cluster.local
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: devsecops
   namespace: ${NAMESPACE}-app
 spec:

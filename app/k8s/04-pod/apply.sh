@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source ./app/k8s/env.sh && \
+envsubst < ./app/k8s/04-pod/pods.yml | kubectl apply -f - && \
+watch 'kubectl get pod -A | grep -E "'${NAMESPACE}'-app|'${NAMESPACE}'-db"'

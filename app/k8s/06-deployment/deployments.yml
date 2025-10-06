@@ -1,0 +1,272 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql
+  namespace: ${NAMESPACE}-db
+spec:
+  selector:
+    matchLabels:
+      app: postgresql
+  template:
+    metadata:
+      labels:
+        app: postgresql
+    spec:
+      containers:
+      - name: postgresql
+        image: postgres:17-alpine
+        ports:
+        - containerPort: 5432
+        envFrom:
+        - secretRef:
+            name: devsecops-db
+        startupProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          failureThreshold: 2
+          successThreshold: 1
+          timeoutSeconds: 3
+        livenessProbe:
+          tcpSocket:
+            port: 5432
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 2
+          successThreshold: 1
+          timeoutSeconds: 3
+        readinessProbe:
+          exec:
+            command:
+              - /bin/bash
+              - -c
+              - "pg_isready -h localhost -p 5432 -U ${POSTGRES_USER} -d ${POSTGRES_DB}"
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 1
+          successThreshold: 1
+          timeoutSeconds: 3
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops-configmap-reference
+  namespace: ${NAMESPACE}-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devsecops-configmap-reference
+  template:
+    metadata:
+      labels:
+        app: devsecops-configmap-reference
+    spec:
+      containers:
+      - name: devsecops-configmap-reference
+        image: ghcr.io/gbrandalise/learn-devsecops:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: devsecops-db
+        - configMapRef:
+            name: devsecops-app
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops-configmap-values
+  namespace: ${NAMESPACE}-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devsecops-configmap-values
+  template:
+    metadata:
+      labels:
+        app: devsecops-configmap-values
+    spec:
+      containers:
+      - name: devsecops-configmap-values
+        image: ghcr.io/gbrandalise/learn-devsecops:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: GREETINGS_MESSAGE
+          valueFrom:
+            configMapKeyRef:
+              name: devsecops-app
+              key: GREETINGS_MESSAGE
+        - name: POSTGRES_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: devsecops-db
+              key: POSTGRES_HOST
+        - name: POSTGRES_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: devsecops-db
+              key: POSTGRES_PORT
+        - name: POSTGRES_DB
+          valueFrom:
+            configMapKeyRef:
+              name: devsecops-db
+              key: POSTGRES_DB
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: devsecops-db
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: devsecops-db
+              key: POSTGRES_PASSWORD
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops-env-vars
+  namespace: ${NAMESPACE}-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devsecops-env-vars
+  template:
+    metadata:
+      labels:
+        app: devsecops-env-vars
+    spec:
+      containers:
+      - name: devsecops-env-vars
+        image: ghcr.io/gbrandalise/learn-devsecops:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: GREETINGS_MESSAGE
+          value: ${GREETINGS_MESSAGE}
+        - name: POSTGRES_HOST
+          value: ${POSTGRES_HOST}
+        - name: POSTGRES_PORT
+          value: ${POSTGRES_PORT}
+        - name: POSTGRES_DB
+          value: ${POSTGRES_DB}
+        - name: POSTGRES_USER
+          value: ${POSTGRES_USER}
+        - name: POSTGRES_PASSWORD
+          value: ${POSTGRES_PASSWORD}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops-secret-values
+  namespace: ${NAMESPACE}-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devsecops-secret-values
+  template:
+    metadata:
+      labels:
+        app: devsecops-secret-values
+    spec:
+      containers:
+      - name: devsecops-secret-values
+        image: ghcr.io/gbrandalise/learn-devsecops:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: GREETINGS_MESSAGE
+          valueFrom:
+            secretKeyRef:
+              name: devsecops-app
+              key: GREETINGS_MESSAGE
+        - name: POSTGRES_HOST
+          valueFrom:
+            secretKeyRef:
+              name: devsecops-db
+              key: POSTGRES_HOST
+        - name: POSTGRES_PORT
+          valueFrom:
+            secretKeyRef:
+              name: devsecops-db
+              key: POSTGRES_PORT
+        - name: POSTGRES_DB
+          valueFrom:
+            secretKeyRef:
+              name: devsecops-db
+              key: POSTGRES_DB
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: devsecops-db
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: devsecops-db
+              key: POSTGRES_PASSWORD
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops
+  namespace: ${NAMESPACE}-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devsecops
+  template:
+    metadata:
+      labels:
+        app: devsecops
+    spec:
+      containers:
+      - name: devsecops
+        image: ghcr.io/gbrandalise/learn-devsecops:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - secretRef:
+            name: devsecops-app
+        - secretRef:
+            name: devsecops-db
+        startupProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health
+          initialDelaySeconds: 30
+          periodSeconds: 5
+          failureThreshold: 2
+          successThreshold: 1
+          timeoutSeconds: 3
+        livenessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health/liveness
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 1
+          successThreshold: 1
+          timeoutSeconds: 3
+        readinessProbe:
+          httpGet:
+            port: 8080
+            path: /actuator/health/readiness
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 1
+          successThreshold: 2
+          timeoutSeconds: 3

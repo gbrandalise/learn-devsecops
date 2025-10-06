@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export NAMESPACE="development" && \
-kubectl delete namespace ${NAMESPACE}-app && \
-kubectl delete namespace ${NAMESPACE}-db && \
-watch 'kubectl get all -n '${NAMESPACE}'-db && kubectl get all -n '${NAMESPACE}'-app'
+source ./app/k8s/env.sh && \
+kubectl delete namespace ${NAMESPACE}-app
+kubectl delete namespace ${NAMESPACE}-db
+watch 'kubectl get po,svc -A | grep -E "'${NAMESPACE}'-app|'${NAMESPACE}'-db"'

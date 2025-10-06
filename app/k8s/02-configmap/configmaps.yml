@@ -1,0 +1,20 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devsecops-db
+  namespace: ${NAMESPACE}-app
+data:
+  POSTGRES_HOST: ${POSTGRES_HOST}
+  POSTGRES_PORT: ${POSTGRES_PORT}
+  POSTGRES_DB: ${POSTGRES_DB}
+  POSTGRES_USER: ${POSTGRES_USER}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: devsecops-app
+  namespace: ${NAMESPACE}-app
+data:
+  GREETINGS_MESSAGE: ${GREETINGS_MESSAGE}

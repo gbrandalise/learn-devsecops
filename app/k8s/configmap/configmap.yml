@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: devsecops-configmap
-data:
-  GREETINGS_MESSAGE: "Hello %s"

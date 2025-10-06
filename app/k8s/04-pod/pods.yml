@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devsecops-latest
+  namespace: ${NAMESPACE}-app
+spec:
+  containers:
+  - name: api
+    image: ghcr.io/gbrandalise/learn-devsecops:latest
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 8080
+    command:
+     - echo
+    args:
+    - "Hello World"
+  restartPolicy: Never
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: devsecops-pt
+  namespace: ${NAMESPACE}-app
+spec:
+  containers:
+  - name: api
+    image: ghcr.io/gbrandalise/learn-devsecops:pt
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 8080
+  restartPolicy: OnFailure

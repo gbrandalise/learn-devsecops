@@ -1,11 +1,8 @@
 #!/bin/bash
 
-export NAMESPACE="development" && \
-export POSTGRES_HOST=$(echo -n "postgresql" | base64) && \
-export POSTGRES_PORT=$(echo -n "5432" | base64) && \
-export POSTGRES_DB=$(echo -n "devsecops" | base64) && \
-export POSTGRES_USER=$(echo -n "devsecops" | base64) && \
-export POSTGRES_PASSWORD=$(echo -n "devsecops" | base64) && \
-export GREETINGS_MESSAGE=$(echo -n "Hello %s" | base64) && \
-envsubst < ./app/k8s/all.yml | kubectl apply -f - && \
-watch 'kubectl get po -n '${NAMESPACE}'-db && kubectl get po -n '${NAMESPACE}'-app'
+source ./app/k8s/env.sh && \
+for f in $(find ./app/k8s/ -name "*.yml"); do
+	envsubst < $f | kubectl apply -f - && \
+	./app/k8s/03-secret/docker-registry.sh
+done
+watch 'kubectl get svc,po -A | grep -E "'${NAMESPACE}'-app|'${NAMESPACE}'-db"'

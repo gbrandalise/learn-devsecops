@@ -2,6 +2,20 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: postgresql-nodeport
+  namespace: ${NAMESPACE}-db
+spec:
+  selector:
+    app: postgresql
+  ports:
+  - port: 5432
+    targetPort: 5432
+    nodePort: 30001
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: devsecops-app-nodeport
   namespace: ${NAMESPACE}-app
 spec:

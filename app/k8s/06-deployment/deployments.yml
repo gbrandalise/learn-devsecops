@@ -42,7 +42,7 @@ spec:
             command:
               - /bin/bash
               - -c
-              - "pg_isready -h localhost -p 5432 -U ${POSTGRES_USER} -d ${POSTGRES_DB}"
+              - "pg_isready -h localhost -p 5432 -U ${POSTGRES_USER_PLAIN} -d ${POSTGRES_DB_PLAIN}"
           initialDelaySeconds: 5
           periodSeconds: 5
           failureThreshold: 1

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-kubectx kind-kind && \
-kubectx --current
+kubectl config use-context kind-kind && \
+kubectl config current-context

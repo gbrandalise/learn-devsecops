@@ -6,6 +6,19 @@
 	],
 	"settings": {
 		"codium.codeCompletion.enable": true,
-		"java.configuration.updateBuildConfiguration": "automatic"
+		"java.configuration.updateBuildConfiguration": "automatic",
+		"sqltools.connections": [
+			{
+				"ssh": "Disabled",
+				"previewLimit": 50,
+				"server": "localhost",
+				"port": 30001,
+				"askForPassword": true,
+				"driver": "PostgreSQL",
+				"name": "DevSecOps",
+				"database": "devsecops",
+				"username": "devsecops"
+			}
+		]
 	}
 }

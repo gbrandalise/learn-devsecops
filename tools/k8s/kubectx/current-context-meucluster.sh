@@ -1,4 +1,4 @@
 #!/bin/bash
 
-kubectx kind-kind && \
+kubectx kind-meucluster && \
 kubectx --current

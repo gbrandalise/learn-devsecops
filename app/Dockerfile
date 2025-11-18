@@ -20,7 +20,7 @@ RUN mvn verify
 FROM compile as package
 RUN mvn install -DskipTests -Dmaven.test.skip=true
 
-FROM openjdk:21-slim
+FROM eclipse-temurin:21-noble
 RUN addgroup --system devsecops
 RUN adduser --system devsecops --ingroup devsecops
 WORKDIR /app

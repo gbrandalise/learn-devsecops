@@ -15,6 +15,8 @@ module com.neo.learn.presentation {
 	opens com.neo.learn.presentation;
 	opens com.neo.learn.presentation.hello;
 	opens com.neo.learn.presentation.probe;
+	opens com.neo.learn.presentation.stress;
+	opens com.neo.learn.presentation.stress.cpu;
 
 	exports com.neo.learn.presentation;
 

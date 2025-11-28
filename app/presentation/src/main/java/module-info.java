@@ -17,6 +17,7 @@ module com.neo.learn.presentation {
 	opens com.neo.learn.presentation.probe;
 	opens com.neo.learn.presentation.stress;
 	opens com.neo.learn.presentation.stress.cpu;
+	opens com.neo.learn.presentation.stress.memory;
 
 	exports com.neo.learn.presentation;
 

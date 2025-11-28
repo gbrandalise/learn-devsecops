@@ -20,25 +20,25 @@ public class ProbeController {
 	@GetMapping("liveness/down")
 	public String livenessDown() {
 		AvailabilityChangeEvent.publish(publisher, this, LivenessState.BROKEN);
-		return "/probes.html";
+		return "/index.html";
 	}
 
 	@GetMapping("liveness/up")
 	public String livenessUp() {
 		AvailabilityChangeEvent.publish(publisher, this, LivenessState.CORRECT);
-		return "/probes.html";
+		return "/index.html";
 	}
 
 	@GetMapping("readiness/down")
 	public String readinessDown() {
 		AvailabilityChangeEvent.publish(publisher, this, ReadinessState.REFUSING_TRAFFIC);
-		return "/probes.html";
+		return "/index.html";
 	}
 
 	@GetMapping("readiness/up")
 	public String readinessUp() {
 		AvailabilityChangeEvent.publish(publisher, this, ReadinessState.ACCEPTING_TRAFFIC);
-		return "/probes.html";
+		return "/index.html";
 	}
 
 }

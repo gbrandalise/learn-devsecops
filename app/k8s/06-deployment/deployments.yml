@@ -152,17 +152,17 @@ spec:
         - containerPort: 8080
         env:
         - name: GREETINGS_MESSAGE
-          value: ${GREETINGS_MESSAGE}
+          value: ${GREETINGS_MESSAGE_PLAIN}
         - name: POSTGRES_HOST
-          value: ${POSTGRES_HOST}
+          value: ${POSTGRES_HOST_PLAIN}
         - name: POSTGRES_PORT
-          value: ${POSTGRES_PORT}
+          value: "${POSTGRES_PORT_PLAIN}"
         - name: POSTGRES_DB
-          value: ${POSTGRES_DB}
+          value: ${POSTGRES_DB_PLAIN}
         - name: POSTGRES_USER
-          value: ${POSTGRES_USER}
+          value: ${POSTGRES_USER_PLAIN}
         - name: POSTGRES_PASSWORD
-          value: ${POSTGRES_PASSWORD}
+          value: ${POSTGRES_PASSWORD_PLAIN}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -270,3 +270,7 @@ spec:
           failureThreshold: 1
           successThreshold: 2
           timeoutSeconds: 3
+        resources:
+          limits:
+            cpu: 2000m
+            memory: 500Mi

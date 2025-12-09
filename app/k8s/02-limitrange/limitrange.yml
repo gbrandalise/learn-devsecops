@@ -1,0 +1,45 @@
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: devsecops-resources-default-app
+  namespace: ${NAMESPACE}-app
+spec:
+  limits:
+    - type: Container
+      defaultRequest: # Resources->Requests
+        cpu: 10m
+        memory: 250Mi
+      default: # Resources->Limits
+        cpu: 2000m
+        memory: 500Mi
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: devsecops-resources-default-db
+  namespace: ${NAMESPACE}-db
+spec:
+  limits:
+    - type: Container
+      defaultRequest: # Resources->Requests
+        cpu: 5m
+        memory: 70Mi
+      default: # Resources->Limits
+        cpu: 2000m
+        memory: 500Mi
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: devsecops-resources-min-max-app
+  namespace: ${NAMESPACE}-app
+spec:
+  limits:
+    - type: Pod
+      min: # Resources->Request/Limits
+        cpu: 5m
+        memory: 120Mi
+      max: # Resources->Request/Limits
+        cpu: 2500m
+        memory: 750Mi

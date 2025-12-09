@@ -193,6 +193,11 @@ spec:
           failureThreshold: 1
           successThreshold: 2
           timeoutSeconds: 3
+        # QoS = Quality of Service
+        # Define a priorização da eliminação dos pods caso ocorra falta de recursos nos nodes, seguindo a seguinte sequência:
+        # BestEffort = Pods sem configuração de resources
+        # Burstable = Pods com recursos limitados seja de requests ou limits
+        # Guaranteed = Pods com recursos limitados e idênticos, tanto em requests como em limits, pois indica um pod que não altera seus limites mínimos e máximos de uso de recursos
         resources:
           requests:
             cpu: 10m

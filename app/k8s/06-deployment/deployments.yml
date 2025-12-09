@@ -48,174 +48,13 @@ spec:
           failureThreshold: 1
           successThreshold: 1
           timeoutSeconds: 3
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: devsecops-configmap-reference
-  namespace: ${NAMESPACE}-app
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: devsecops-configmap-reference
-  template:
-    metadata:
-      labels:
-        app: devsecops-configmap-reference
-    spec:
-      containers:
-      - name: devsecops-configmap-reference
-        image: ghcr.io/gbrandalise/learn-devsecops:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        envFrom:
-        - configMapRef:
-            name: devsecops-db
-        - configMapRef:
-            name: devsecops-app
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: devsecops-configmap-values
-  namespace: ${NAMESPACE}-app
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: devsecops-configmap-values
-  template:
-    metadata:
-      labels:
-        app: devsecops-configmap-values
-    spec:
-      containers:
-      - name: devsecops-configmap-values
-        image: ghcr.io/gbrandalise/learn-devsecops:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        env:
-        - name: GREETINGS_MESSAGE
-          valueFrom:
-            configMapKeyRef:
-              name: devsecops-app
-              key: GREETINGS_MESSAGE
-        - name: POSTGRES_HOST
-          valueFrom:
-            configMapKeyRef:
-              name: devsecops-db
-              key: POSTGRES_HOST
-        - name: POSTGRES_PORT
-          valueFrom:
-            configMapKeyRef:
-              name: devsecops-db
-              key: POSTGRES_PORT
-        - name: POSTGRES_DB
-          valueFrom:
-            configMapKeyRef:
-              name: devsecops-db
-              key: POSTGRES_DB
-        - name: POSTGRES_USER
-          valueFrom:
-            configMapKeyRef:
-              name: devsecops-db
-              key: POSTGRES_USER
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            configMapKeyRef:
-              name: devsecops-db
-              key: POSTGRES_PASSWORD
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: devsecops-env-vars
-  namespace: ${NAMESPACE}-app
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: devsecops-env-vars
-  template:
-    metadata:
-      labels:
-        app: devsecops-env-vars
-    spec:
-      containers:
-      - name: devsecops-env-vars
-        image: ghcr.io/gbrandalise/learn-devsecops:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        env:
-        - name: GREETINGS_MESSAGE
-          value: ${GREETINGS_MESSAGE_PLAIN}
-        - name: POSTGRES_HOST
-          value: ${POSTGRES_HOST_PLAIN}
-        - name: POSTGRES_PORT
-          value: "${POSTGRES_PORT_PLAIN}"
-        - name: POSTGRES_DB
-          value: ${POSTGRES_DB_PLAIN}
-        - name: POSTGRES_USER
-          value: ${POSTGRES_USER_PLAIN}
-        - name: POSTGRES_PASSWORD
-          value: ${POSTGRES_PASSWORD_PLAIN}
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: devsecops-secret-values
-  namespace: ${NAMESPACE}-app
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: devsecops-secret-values
-  template:
-    metadata:
-      labels:
-        app: devsecops-secret-values
-    spec:
-      containers:
-      - name: devsecops-secret-values
-        image: ghcr.io/gbrandalise/learn-devsecops:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        env:
-        - name: GREETINGS_MESSAGE
-          valueFrom:
-            secretKeyRef:
-              name: devsecops-app
-              key: GREETINGS_MESSAGE
-        - name: POSTGRES_HOST
-          valueFrom:
-            secretKeyRef:
-              name: devsecops-db
-              key: POSTGRES_HOST
-        - name: POSTGRES_PORT
-          valueFrom:
-            secretKeyRef:
-              name: devsecops-db
-              key: POSTGRES_PORT
-        - name: POSTGRES_DB
-          valueFrom:
-            secretKeyRef:
-              name: devsecops-db
-              key: POSTGRES_DB
-        - name: POSTGRES_USER
-          valueFrom:
-            secretKeyRef:
-              name: devsecops-db
-              key: POSTGRES_USER
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: devsecops-db
-              key: POSTGRES_PASSWORD
+        resources:
+          requests:
+            cpu: 5m
+            memory: 70Mi
+          limits:
+            cpu: 2000m
+            memory: 500Mi
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -238,7 +77,91 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+        # env:
+        # Secret Values
+        # - name: GREETINGS_MESSAGE
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: devsecops-app
+        #       key: GREETINGS_MESSAGE
+        # - name: POSTGRES_HOST
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_HOST
+        # - name: POSTGRES_PORT
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_PORT
+        # - name: POSTGRES_DB
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_DB
+        # - name: POSTGRES_USER
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_USER
+        # - name: POSTGRES_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_PASSWORD
+
+        # Env Vars
+        # - name: GREETINGS_MESSAGE
+        #   value: ${GREETINGS_MESSAGE_PLAIN}
+        # - name: POSTGRES_HOST
+        #   value: ${POSTGRES_HOST_PLAIN}
+        # - name: POSTGRES_PORT
+        #   value: "${POSTGRES_PORT_PLAIN}"
+        # - name: POSTGRES_DB
+        #   value: ${POSTGRES_DB_PLAIN}
+        # - name: POSTGRES_USER
+        #   value: ${POSTGRES_USER_PLAIN}
+        # - name: POSTGRES_PASSWORD
+        #   value: ${POSTGRES_PASSWORD_PLAIN}
+        # - name: GREETINGS_MESSAGE
+
+        # ConfigMap Values
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: devsecops-app
+        #       key: GREETINGS_MESSAGE
+        # - name: POSTGRES_HOST
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_HOST
+        # - name: POSTGRES_PORT
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_PORT
+        # - name: POSTGRES_DB
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_DB
+        # - name: POSTGRES_USER
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_USER
+        # - name: POSTGRES_PASSWORD
+        #   valueFrom:
+        #     configMapKeyRef:
+        #       name: devsecops-db
+        #       key: POSTGRES_PASSWORD
         envFrom:
+        # ConfigMap Reference
+        # - configMapRef:
+        #     name: devsecops-db
+        # - configMapRef:
+        #     name: devsecops-app
+        # Secret Reference
         - secretRef:
             name: devsecops-app
         - secretRef:
@@ -271,6 +194,9 @@ spec:
           successThreshold: 2
           timeoutSeconds: 3
         resources:
+          requests:
+            cpu: 10m
+            memory: 250Mi
           limits:
             cpu: 2000m
             memory: 500Mi

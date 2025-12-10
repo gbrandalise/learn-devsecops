@@ -53,7 +53,7 @@ spec:
             cpu: 5m
             memory: 70Mi
           limits:
-            cpu: 2000m
+            cpu: 500m
             memory: 500Mi
 ---
 apiVersion: apps/v1
@@ -203,5 +203,5 @@ spec:
             cpu: 10m
             memory: 250Mi
           limits:
-            cpu: 2000m
+            cpu: 500m
             memory: 500Mi

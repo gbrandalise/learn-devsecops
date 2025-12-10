@@ -1,1 +1,1 @@
-INSERT INTO hello VALUES (1, 'Test');
+INSERT INTO hello VALUES (1000, 'Test');

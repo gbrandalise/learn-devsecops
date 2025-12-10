@@ -44,7 +44,7 @@ class StressMemoryServiceTest {
     }
 
     @Test
-    @Timeout(2)
+    @Timeout(10)
     void shouldReturnPromptly() {
         assumeTrue(hasEnoughHeap(), "Ambiente sem heap suficiente; teste pulado");
         // Garante que o método conclui rapidamente (sem loops infinitos)

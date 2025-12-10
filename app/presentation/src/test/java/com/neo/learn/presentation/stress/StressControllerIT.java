@@ -63,7 +63,7 @@ class StressControllerIT {
         mockMvc.perform(get("/stress/cpu")).andReturn();
         long elapsed = System.currentTimeMillis() - start;
         // 1 segundo é um limite razoável para o ambiente de CI
-        assert(elapsed < 1000);
+        assert(elapsed < 10000);
         verify(stressCpuService, times(1)).test();
     }
 

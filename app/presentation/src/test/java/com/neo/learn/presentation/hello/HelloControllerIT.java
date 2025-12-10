@@ -31,8 +31,19 @@ class HelloControllerIT {
 
 	@Test
 	void testGreetingsById() throws Exception {
-		Long id = 1L;
+		Long id = 1000L;
 		String name = "Test";
+		String result = mockMvc.perform(get("/greetings/by-id/{id}", id))
+				.andReturn()
+				.getResponse()
+				.getContentAsString();
+		assertEquals("Hello %s".formatted(name), result);
+	}
+
+	@Test
+	void testGreetingsByIUnknow() throws Exception {
+		Long id = 2L;
+		String name = "unknow";
 		String result = mockMvc.perform(get("/greetings/by-id/{id}", id))
 				.andReturn()
 				.getResponse()

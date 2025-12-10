@@ -29,7 +29,7 @@ class HelloRepositoryIT {
 
 	@Test
 	void testInsertHello() {
-		Long id = 1L;
+		Long id = 1000L;
 		Optional<Hello> entity = repository.findById(id);
 		assertTrue(entity.isPresent());
 	}

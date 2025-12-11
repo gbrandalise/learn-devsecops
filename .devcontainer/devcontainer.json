@@ -74,6 +74,11 @@
 			"type": "bind",
 			"source": "/home/ubuntu/.m2",
 			"target": "/root/.m2"
+		},
+		{
+			"type": "bind",
+			"source": "/home/ubuntu/.env",
+			"target": "/root/.env"
 		}
 	],
 	"features": {
@@ -99,5 +104,9 @@
 		"ghcr.io/devcontainers-extra/features/kind",
 		"ghcr.io/devcontainers/features/java"
 	],
-    "postCreateCommand": "apt-get update && apt-get install openssh-client gettext --no-install-recommends -y"
+    "postCreateCommand": [
+		"apt-get update && apt-get install openssh-client gettext --no-install-recommends -y",
+		"&& [ -f /root/.env ] && cat /root/.env >> /root/.profile && source /root/.profile",
+		"&& ./tools/github/create-runner.sh"
+	]
 }

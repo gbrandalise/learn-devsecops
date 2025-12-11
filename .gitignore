@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+*.out
 
 # BlueJ files
 *.ctxt
@@ -28,3 +29,6 @@ target/
 
 # Docker
 get-docker.sh
+
+# Github Runner
+**/actions-runner/

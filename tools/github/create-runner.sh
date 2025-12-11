@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Load env vars"
+source /root/.env && \
 echo "Validate that the GH_PAT environment variable is set"
 if [[ -z "${GH_PAT}" ]]; then
   echo "[erro] Defina variavel de ambiente GH_PAT (PAT com permissões: repo/admin)." >&2;

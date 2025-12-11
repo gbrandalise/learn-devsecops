@@ -107,6 +107,7 @@
     "postCreateCommand": [
 		"apt-get update && apt-get install openssh-client gettext --no-install-recommends -y",
 		"&& [ -f /root/.env ] && cat /root/.env >> /root/.profile && source /root/.profile",
+		"&& ./tools/git/config.sh",
 		"&& ./tools/github/create-runner.sh"
 	]
 }

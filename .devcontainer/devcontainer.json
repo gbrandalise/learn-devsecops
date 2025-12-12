@@ -104,5 +104,6 @@
 		"ghcr.io/devcontainers-extra/features/kind",
 		"ghcr.io/devcontainers/features/java"
 	],
-    "postCreateCommand": "./.devcontainer/post-create.sh"
+    "postCreateCommand": "./.devcontainer/post-create.sh",
+	"postStartCommand": "./.devcontainer/post-start.sh"
 }

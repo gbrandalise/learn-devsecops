@@ -44,6 +44,7 @@ echo "Create the runner and start the configuration experience"
 ./config.sh --url "${RUNNER_URL}" \
 	--token ${REGISTRATION_TOKEN} \
 	--name "learn-devsecops-runner" \
+	--labels "devcontainer" \
 	--ephemeral \
 	--work "${WORKDIR}" \
 	--replace \

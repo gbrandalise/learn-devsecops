@@ -92,3 +92,11 @@ jobs:
         push: true
         tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
         labels: ${{ steps.meta.outputs.labels }}
+
+  deploy-devcontainer:
+    runs-on: devcontainer
+    needs: [build-publish-image]
+    steps:
+      - name: Deploy Devcontainer
+        run: pwd
+        shell: bash

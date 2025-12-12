@@ -32,3 +32,6 @@ get-docker.sh
 
 # Github Runner
 **/actions-runner/
+_PipelineMapping/
+_temp/
+_tool/

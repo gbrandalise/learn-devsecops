@@ -98,5 +98,5 @@ jobs:
     needs: [build-publish-image]
     steps:
       - name: Deploy Devcontainer
-        run: pwd
+        run: "cd ../.. && ./app/k8s/delete.sh && ./app/k8s/apply.sh"
         shell: bash

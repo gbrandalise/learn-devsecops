@@ -22,7 +22,7 @@ metadata:
   namespace: development-db
 spec:
   hard:
-    requests.cpu: 10m
-    requests.memory: 100Mi
+    requests.cpu: 50m
+    requests.memory: 500Mi
     limits.cpu: 1000m
     limits.memory: 1Gi

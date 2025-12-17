@@ -3,5 +3,5 @@
 source ./app/k8s/env.sh && \
 kubectl delete namespace --ignore-not-found ${NAMESPACE}-app && \
 kubectl delete namespace --ignore-not-found ${NAMESPACE}-db && \
-kubectl delete pv devsecops-db-nfs && \
+kubectl delete pv devsecops-db-nfs
 kubectl get po,svc -A | grep -E "${NAMESPACE}" || true

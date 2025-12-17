@@ -16,8 +16,6 @@ validateEnvVars() {
 }
 
 startRunner() {
-	createRunner
-
 	echo "Running the runner!"
 	cd "${RUNNER_DIR}" && \
 	nohup ./run.sh > nohup.out 2>&1 &
@@ -58,6 +56,8 @@ createRunner() {
 		--work "${WORKDIR}" \
 		--replace \
 		--unattended
+
+	startRunner
 }
 
 if [[ -d "${RUNNER_DIR}" ]]; then

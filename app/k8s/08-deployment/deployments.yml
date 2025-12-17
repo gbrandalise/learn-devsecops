@@ -21,6 +21,7 @@ spec:
         envFrom:
         - secretRef:
             name: devsecops-db
+
         # Env Var Postgres Data
         env:
         - name: PGDATA
@@ -63,12 +64,17 @@ spec:
         volumeMounts:
         - name: postgresql-data
           mountPath: /var/lib/postgresql/data
-      # External Volume - HostPath (Path in cluster's node)
       volumes:
       - name: postgresql-data
-        hostPath:
-          path: /home/volumes/postgresql-data
-          type: DirectoryOrCreate
+
+        # HostPath (Path in cluster's node)
+        # hostPath:
+        #   path: /home/volumes/postgresql-data
+        #   type: DirectoryOrCreate
+
+        # NFS
+        persistentVolumeClaim:
+          claimName: devsecops-db-nfs
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -91,6 +97,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
+
         # env:
         # Secret Values
         # - name: GREETINGS_MESSAGE
@@ -170,11 +177,13 @@ spec:
         #       name: devsecops-db
         #       key: POSTGRES_PASSWORD
         envFrom:
+
         # ConfigMap Reference
         # - configMapRef:
         #     name: devsecops-db
         # - configMapRef:
         #     name: devsecops-app
+
         # Secret Reference
         - secretRef:
             name: devsecops-app
@@ -207,11 +216,13 @@ spec:
           failureThreshold: 1
           successThreshold: 2
           timeoutSeconds: 3
+
         # QoS = Quality of Service
         # Define a priorização da eliminação dos pods caso ocorra falta de recursos nos nodes, seguindo a seguinte sequência:
         # BestEffort = Pods sem configuração de resources
         # Burstable = Pods com recursos limitados seja de requests ou limits
         # Guaranteed = Pods com recursos limitados e idênticos, tanto em requests como em limits, pois indica um pod que não altera seus limites mínimos e máximos de uso de recursos
+
         resources:
           requests:
             cpu: 10m

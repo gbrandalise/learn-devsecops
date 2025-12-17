@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: devsecops-db-nfs
+  namespace: ${NAMESPACE}-db
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: devsecops-static-nfs
+  resources:
+    requests:
+      storage: 1Gi

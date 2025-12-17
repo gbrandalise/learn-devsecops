@@ -4,4 +4,5 @@
 ./.devcontainer/load-env.sh && \
 ./tools/git/config.sh && \
 ./tools/github/create-runner.sh && \
-./tools/k8s/kind/create-cluster.sh
+./tools/k8s/kind/create-cluster.sh && \
+./tools/docker/create-nfs-server.sh

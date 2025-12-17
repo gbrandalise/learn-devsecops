@@ -67,8 +67,8 @@ spec:
       volumes:
       - name: postgresql-data
         hostPath:
-          path: /home
-          type: Directory
+          path: /home/volumes/postgresql-data
+          type: DirectoryOrCreate
 ---
 apiVersion: apps/v1
 kind: Deployment

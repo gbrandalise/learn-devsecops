@@ -6,7 +6,9 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  storageClassName: devsecops-static-nfs
+  # Exemplo de uso de storageClass dinamico na Digital Ocean que ira criar um persistentVolume automaticamente apontando para o serviço do block storage da Digital Ocean
+  # storageClassName: do-block-storage
+  storageClassName: devsecops-static-nfs 
   resources:
     requests:
       storage: 1Gi

@@ -60,6 +60,7 @@ spec:
           limits:
             cpu: 500m
             memory: 500Mi
+
         # Volume Mounts in Container
         volumeMounts:
         - name: postgresql-data
@@ -67,10 +68,18 @@ spec:
       volumes:
       - name: postgresql-data
 
-        # HostPath (Path in cluster's node)
+        # HostPath (Pasta do node do cluster)
         # hostPath:
         #   path: /home/volumes/postgresql-data
         #   type: DirectoryOrCreate
+
+        # ConfigMap (Usado para mapear um arquivo do configmap como volume)
+        # configMap:
+        #   name: devsecops-db
+
+        # Secret (Usado para mapear um arquivo do secret como volume)
+        # secret:
+        #   secretName: devsecops-db
 
         # NFS
         persistentVolumeClaim:

@@ -239,3 +239,32 @@ spec:
           limits:
             cpu: 500m
             memory: 500Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devsecops-pt
+  namespace: ${NAMESPACE}-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: devsecops-pt
+  template:
+    metadata:
+      labels:
+        app: devsecops-pt
+    spec:
+      containers:
+      - name: devsecops-pt
+        image: ghcr.io/gbrandalise/learn-devsecops:pt
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 5m
+            memory: 120Mi
+          limits:
+            cpu: 10m
+            memory: 150Mi

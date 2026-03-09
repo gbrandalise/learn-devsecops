@@ -1,17 +1,28 @@
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-devsecops
   namespace: ${NAMESPACE}-app
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"  # Habilita regex no path
+    nginx.ingress.kubernetes.io/rewrite-target: /$1  # Reescreve para
 spec:
   ingressClassName: nginx
   rules:
   - http:
       paths:
-      - path: /
-        pathType: Prefix
+      - path: /(.*)  # Captura: $1 = resto da URL
+        pathType: ImplementationSpecific
         backend:
           service:
             name: devsecops-app-nodeport
             port:
               number: 8080
+      - path: /pt/(.*)  # Captura: $1 = resto da URL
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: devsecops-pt-nodeport
+            port:
+              number: 8082

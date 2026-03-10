@@ -12,17 +12,31 @@ spec:
   rules:
   - http:
       paths:
-      - path: /(.*)  # Captura: $1 = resto da URL
-        pathType: ImplementationSpecific
+      - path: /en/(.*)  # Captura: $1 = resto da URL
+        pathType: ImplementationSpecific # Prefix, Exact, ImplementationSpecific = Regex
         backend:
           service:
             name: devsecops-app-nodeport
             port:
               number: 8080
       - path: /pt/(.*)  # Captura: $1 = resto da URL
-        pathType: ImplementationSpecific
+        pathType: ImplementationSpecific # Prefix, Exact, ImplementationSpecific = Regex
         backend:
           service:
             name: devsecops-pt-nodeport
             port:
               number: 8082
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-devsecops-default
+  namespace: ${NAMESPACE}-app
+spec:
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: devsecops-app-nodeport
+      port:
+        number: 8080
+

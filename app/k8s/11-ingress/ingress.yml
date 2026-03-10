@@ -39,4 +39,32 @@ spec:
       name: devsecops-app-nodeport
       port:
         number: 8080
-
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-devsecops-subdomain
+  namespace: ${NAMESPACE}-app
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: en.127.0.0.1.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: devsecops-app-nodeport
+            port:
+              number: 8080
+  - host: pt.127.0.0.1.nip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: devsecops-pt-nodeport
+            port:
+              number: 8082

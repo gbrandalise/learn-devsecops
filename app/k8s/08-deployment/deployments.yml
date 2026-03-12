@@ -100,6 +100,24 @@ spec:
       labels:
         app: devsecops
     spec:
+      initContainers:
+      - name: wait-postgres
+        image: postgres:17-alpine
+        command:
+        - sh
+        - -c
+        - |
+          echo "Aguardando PostgreSQL em postgresql.${NAMESPACE}-db.svc.cluster.local:${POSTGRES_PORT_PLAIN}..."
+          for i in {1..30}; do
+            if pg_isready -h postgresql.${NAMESPACE}-db.svc.cluster.local -p ${POSTGRES_PORT_PLAIN} -U ${POSTGRES_USER_PLAIN} -d ${POSTGRES_DB_PLAIN}; then
+              echo "✅ PostgreSQL pronto (pg_isready OK) na tentativa $i!"
+              exit 0
+            fi
+            echo "⏳ Tentativa $i/30: ainda não pronto"
+            sleep 5
+          done
+          echo "❌ Timeout pg_isready (150s)"
+          exit 1
       containers:
       - name: devsecops
         image: ghcr.io/gbrandalise/learn-devsecops:latest
@@ -240,6 +258,21 @@ spec:
           limits:
             cpu: 500m
             memory: 500Mi
+        lifecycle:
+          postStart:
+            # httpGet:
+            #   path: /
+            #   port: 80
+            #   host: localhost
+
+            # sleep:
+            #   seconds: 10
+
+            exec:
+              command: [ /bin/bash, -c, "echo 'Starting the application...' && sleep 10" ]
+          preStop:
+            exec:
+              command: [ /bin/bash, -c, "echo 'Stopping the application...' && sleep 10" ]
 ---
 apiVersion: apps/v1
 kind: Deployment

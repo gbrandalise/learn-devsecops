@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: devsecops-node-exporter
+  namespace: ${NAMESPACE}-app
+spec:
+  selector:
+    matchLabels:
+      app: devsecops-node-exporter
+  template:
+    metadata:
+      labels:
+        app: devsecops-node-exporter
+    spec:
+      containers:
+      - name: devsecops-node-exporter
+        image: prom/node-exporter:v1.7.0
+        ports:
+        - containerPort: 9100
+        volumeMounts:
+        - name: proc
+          mountPath: /host/proc
+          readOnly: true
+        - name: sys
+          mountPath: /host/sys
+          readOnly: true
+        - name: root
+          mountPath: /rootfs
+          readOnly: true
+      volumes:
+      - name: proc
+        hostPath:
+          path: /proc
+      - name: sys
+        hostPath:
+          path: /sys
+      - name: root
+        hostPath:
+          path: /

@@ -20,8 +20,18 @@ class ApplicationIT {
 	}
 
 	@Test
-	void shouldStartApplication() {
-		assertDoesNotThrow(() -> Application.main(new String[0]));
+	void shouldStartApplication_whenArgsIsEmpty() {
+		assertDoesNotThrow(() -> Application.main()); // using default server.port=8080
+	}
+
+	@Test
+	void shouldRunJob() {
+		assertDoesNotThrow(() -> Application.main("job"));
+	}
+
+	@Test
+	void shouldRunApplication() {
+		assertDoesNotThrow(() -> Application.main("app", "--server.port=0"));
 	}
 
 }

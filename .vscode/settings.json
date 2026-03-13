@@ -1,0 +1,15 @@
+{
+	"java.import.gradle.java.home": "/usr/local/sdkman/candidates/java/current",
+	"java.jdt.ls.java.home": "/usr/local/sdkman/candidates/java/current",
+	"java.test.config": {
+		"vmArgs": [
+			"-javaagent:/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.7/byte-buddy-agent-1.17.7.jar",
+			"--add-opens",
+			"java.base/java.lang=ALL-UNNAMED",
+			"--add-opens",
+			"java.base/java.util=ALL-UNNAMED",
+			"--add-opens",
+			"java.base/java.lang.invoke=ALL-UNNAMED"
+		]
+	}
+}

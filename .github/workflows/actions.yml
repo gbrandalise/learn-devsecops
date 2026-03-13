@@ -1,7 +1,7 @@
 name: DevSecOps CI
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
   push:
     branches: [ "main" ]
 
@@ -13,10 +13,10 @@ jobs:
   resolve-dependencies:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6.0.2
 
     - name: Dependencies
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7.0.0
       with:
         context: "{{defaultContext}}:app"
         target: dependency
@@ -25,10 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [resolve-dependencies]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6.0.2
 
     - name: Compile
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7.0.0
       with:
         context: "{{defaultContext}}:app"
         target: compile
@@ -37,10 +37,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [compile]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6.0.2
 
     - name: Tests
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7.0.0
       with:
         context: "{{defaultContext}}:app"
         target: test
@@ -49,10 +49,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [test]
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6.0.2
 
     - name: Package
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7.0.0
       with:
         context: "{{defaultContext}}:app"
         target: package
@@ -66,10 +66,10 @@ jobs:
       attestations: write
       id-token: write
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6.0.2
 
     - name: Docker Image
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7.0.0
       with:
         context: "{{defaultContext}}:app"
 
@@ -87,7 +87,7 @@ jobs:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7.0.0
       with:
         context: "{{defaultContext}}:app"
         push: true

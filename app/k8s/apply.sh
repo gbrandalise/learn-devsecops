@@ -5,4 +5,4 @@ for f in $(find ./app/k8s/ -name "*.yml"); do
 	envsubst < $f | kubectl apply -f -
 done
 ./tools/k8s/kubectx/current-namespace-development-app.sh && \
-watch 'kubectl get svc,po -A | grep -E "'${NAMESPACE}'"'
+kubectl get svc,po -A | grep -E "${NAMESPACE}"

@@ -63,7 +63,7 @@
 			]
 		}
 	},
-	"forwardPorts": [80, 8080, 30000, 30001, 30002, 30010, 30011],
+	"forwardPorts": [80],
 	"mounts": [
 		{
 			"type": "bind",

@@ -4,7 +4,10 @@ metadata:
   name: devsecops-job
   namespace: ${NAMESPACE}-app
 spec:
-  ttlSecondsAfterFinished: 60
+  ttlSecondsAfterFinished: 60 # Tempo até o job com sucesso ser removido do cluster
+  # completions: 2 # Quantas vezes o job precisa ser executado com sucesso para ser finalizado
+  # parallelism: 4 # Quantos pods serão executados em paralelo para esse job
+  # backoffLimit: 3 # Quantas vezes os pods do job podem falhar antes do job ser considerado falho como um todo
   template:
     metadata:
       labels:

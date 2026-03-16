@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: devsecops-cronjob
+  namespace: ${NAMESPACE}-app
+spec:
+  schedule: "*/1 * * * *"
+  successfulJobsHistoryLimit: 2
+  failedJobsHistoryLimit: 1
+  # suspend: true # Suspende o cronjob
+  # concurrencyPolicy: Allow # Allow = Permite que vários pods sejam executados ao mesmo tempo
+                             # Replace = Sobrescreve o job atual independente do status
+                             # Forbid = Rejeita o job se já existir um em execução até ser concluído
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            app: devsecops-job
+        spec:
+          containers:
+          - name: devsecops-job
+            image: ghcr.io/gbrandalise/learn-devsecops:latest
+            command:
+            - java
+            - -jar
+            - /app/app.jar
+            args:
+            - "job"
+          restartPolicy: Never

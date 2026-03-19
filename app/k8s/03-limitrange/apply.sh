@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source_dir="$(dirname "$(realpath "$0")")" && \
 source ./app/k8s/env.sh && \
-envsubst < ./app/k8s/03-limitrange/limitrange.yml | kubectl apply -f - && \
+envsubst < "${source_dir}/limitrange.yml" | kubectl apply -f - && \
 watch 'kubectl get limitrange -A'

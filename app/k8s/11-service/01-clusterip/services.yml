@@ -15,6 +15,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  name: postgresql-deploy
+  namespace: ${NAMESPACE}-db
+spec:
+  selector:
+    app: postgresql-deploy
+  ports:
+  - port: 5432
+    targetPort: 5432
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: devsecops-app-clusterip
   namespace: ${NAMESPACE}-app
 spec:

@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgresql
+  name: postgresql-deploy
   namespace: ${NAMESPACE}-db
 spec:
   selector:
     matchLabels:
-      app: postgresql
+      app: postgresql-deploy
   template:
     metadata:
       labels:
-        app: postgresql
+        app: postgresql-deploy
     spec:
       containers:
-      - name: postgresql
+      - name: postgresql-deploy
         image: postgres:17-alpine
         ports:
         - containerPort: 5432
@@ -110,10 +110,10 @@ spec:
           echo "Aguardando PostgreSQL em postgresql.${NAMESPACE}-db.svc.cluster.local:${POSTGRES_PORT_PLAIN}..."
           for i in {1..30}; do
             if pg_isready -h postgresql.${NAMESPACE}-db.svc.cluster.local -p ${POSTGRES_PORT_PLAIN} -U ${POSTGRES_USER_PLAIN} -d ${POSTGRES_DB_PLAIN}; then
-              echo "✅ PostgreSQL pronto (pg_isready OK) na tentativa $i!"
+              echo "✅ PostgreSQL pronto (pg_isready OK) na tentativa ${i}!"
               exit 0
             fi
-            echo "⏳ Tentativa $i/30: ainda não pronto"
+            echo "⏳ Tentativa ${i}/30: ainda não pronto"
             sleep 5
           done
           echo "❌ Timeout pg_isready (150s)"

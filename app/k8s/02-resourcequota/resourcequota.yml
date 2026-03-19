@@ -26,5 +26,5 @@ spec:
     requests.memory: 500Mi
     limits.cpu: 1000m
     limits.memory: 1Gi
-    persistentvolumeclaims: 2
+    persistentvolumeclaims: "4"
     requests.storage: 2Gi

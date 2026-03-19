@@ -1,5 +1,0 @@
-#!/bin/bash
-
-source ./app/k8s/env.sh && \
-envsubst < ./app/k8s/09-replicaset/replicasets.yml | kubectl apply -f - && \
-watch 'kubectl get replicaset,pod -A'

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source_dir="$(dirname "$(realpath "$0")")" && \
 source ./app/k8s/env.sh && \
-envsubst < ./app/k8s/14-cronjob/cronjob.yml | kubectl apply -f - && \
+envsubst < "${source_dir}/cronjob.yml" | kubectl apply -f - && \
 watch 'kubectl get cronjob,job,pod -A'

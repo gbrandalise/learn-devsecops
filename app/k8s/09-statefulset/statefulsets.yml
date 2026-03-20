@@ -10,6 +10,11 @@ spec:
       app: postgresql
   serviceName: postgresql
   replicas: 2
+  persistentVolumeClaimRetentionPolicy:
+    whenScaled: Retain # Retain (default) = Mantém os Persistent Volumes mesmo depois de diminuir a quantidade de pods
+                       # Delete = Deleta os Persistent Volumes não associados a um pod
+    whenDelete: Retain # Retain (default) = Mantém os Persistent Volumes mesmo depois de deletar os pods
+                       # Delete = Deleta os Persistent Volumes não associados a um pod
   template:
     metadata:
       labels:

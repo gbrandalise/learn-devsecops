@@ -58,8 +58,8 @@ spec:
             cpu: 5m
             memory: 70Mi
           limits:
-            cpu: 500m
-            memory: 500Mi
+            cpu: 100m
+            memory: 100Mi
 
         # Volume Mounts in Container
         volumeMounts:
@@ -253,7 +253,7 @@ spec:
 
         resources:
           requests:
-            cpu: 10m
+            cpu: 100m
             memory: 250Mi
           limits:
             cpu: 500m

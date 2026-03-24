@@ -6,10 +6,10 @@ metadata:
   namespace: development-app
 spec:
   hard:
-    requests.cpu: 100m
-    requests.memory: 2Gi
-    limits.cpu: 4000m
-    limits.memory: 4Gi
+    requests.cpu: "1"
+    requests.memory: 3Gi
+    limits.cpu: "5"
+    limits.memory: 5Gi
     pods: "10"
     services: "5"
     services.loadbalancers: "1"
@@ -24,7 +24,7 @@ spec:
   hard:
     requests.cpu: 50m
     requests.memory: 500Mi
-    limits.cpu: 1000m
-    limits.memory: 1Gi
+    limits.cpu: 1500m
+    limits.memory: 1.5Gi
     persistentvolumeclaims: "4"
     requests.storage: 2Gi

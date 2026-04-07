@@ -1,4 +1,6 @@
 {
 	"name": "Learn DevSecOps - Docker/Kind/Java 21",
-	"image": "gigiobr/learn-devsecops:v1"
+	"image": "gigiobr/learn-devsecops:v1",
+	"privileged": true,
+	"runArgs": ["--name=devsecops"]
 }

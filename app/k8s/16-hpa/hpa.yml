@@ -18,3 +18,26 @@ spec:
       target:
         type: Utilization
         averageUtilization: 50
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 0 # Tempo que o HPA aguarda a estabilização dos PODs para iniciar o scaleUp
+      policies:
+      - periodSeconds: 15 # Instante que o HPA irá capturar o estado do cluster, para iniciar o processo de scaleUp
+        type: Percent # Ex.: Nesse caso o HPA irá verificar quantos PODs tinha há 15 segundos atrás e irá escalar 100% dessa quantidade
+        value: 100 # até atingir a quantidade máxima de PODs determinada no HPA
+      - periodSeconds: 15
+        type: Pods # Nesse caso irá escalar o valor fixo de 2 PODs por vez até atingir a quantidade máxima
+        value: 2
+      selectPolicy: Max # Determina qual das policies irá usar, nesse caso irá usar a que escale a maior quantidade de PODs por vez
+                        # Ex.: Se existe apenas uma réplica, na primeira tentativa de escala irá usar a policy de Pods, aumentando em 2 totalizando 3
+                        # Na próxima tentativa, irá usar a policy de Percent, pois irá aumentar em 3 totalizando 6
+    scaleDown:
+      stabilizationWindowSeconds: 10
+      policies:
+      - periodSeconds: 15
+        type: Percent
+        value: 100
+      - periodSeconds: 15
+        type: Pods
+        value: 2
+      selectPolicy: Min # Nesse caso irá usar a policy que diminua a menor quantidade de PODs por vez

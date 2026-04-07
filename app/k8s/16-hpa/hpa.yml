@@ -12,8 +12,15 @@ spec:
     kind: Deployment
     name: devsecops
   metrics:
-  - type: Resource
+  - type: Resource # Resources do POD
     resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+  - type: ContainerResource # Resources de um container específico
+    containerResource:
+      container: devsecops
       name: cpu
       target:
         type: Utilization

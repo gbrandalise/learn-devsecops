@@ -9,6 +9,8 @@ nodes:
     hostPort: 30001
   - containerPort: 30002
     hostPort: 30002
+  - containerPort: 30778
+    hostPort: 30778
   - containerPort: 30080
     hostPort: 80
 #- role: worker

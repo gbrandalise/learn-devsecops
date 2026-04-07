@@ -1,7 +1,7 @@
 #!/bin/bash
 
-docker rm -f nfs-server & \
-docker volume rm vol_nfs & \
+docker rm -f nfs-server
+docker volume rm vol_nfs
 docker volume create vol_nfs && \
 docker run -d --name nfs-server \
   --privileged \

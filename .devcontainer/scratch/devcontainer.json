@@ -25,10 +25,6 @@
 					"org.springframework.test.web.servlet.result.MockMvcResultHandlers.*"
 				],
 				"codium.codeCompletion.enable": true,
-				"codium.customInstructions.allMessages": "Responda sempre em português do Brasil (pt-BR)",
-				"codium.customInstructions.specificCommands": {
-        			"commit": "Gere sempre a mensagem em português do Brasil (pt-BR)"
-				},
 				"sqltools.connections": [
 					{
 						"ssh": "Disabled",
@@ -45,13 +41,11 @@
 			"extensions": [
 				"ms-azuretools.vscode-docker",
 				"ms-kubernetes-tools.vscode-kubernetes-tools",
-				"vscjava.vscode-java-pack",
-				"vscjava.vscode-lombok",
 				"editorconfig.editorconfig",
-				"vmware.vscode-boot-dev-pack",
 				"codium.codium",
-				"mtxr.sqltools",
-				"mtxr.sqltools-driver-pg"
+				"-vscjava.vscode-java-pack",
+				"-vscjava.vscode-lombok",
+				"-vmware.vscode-boot-dev-pack"
 			]
 		}
 	},

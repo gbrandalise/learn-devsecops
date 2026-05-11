@@ -13,6 +13,9 @@ nodes:
     hostPort: 30778
   - containerPort: 30080
     hostPort: 80
-#- role: worker
-#- role: worker
-#- role: worker
+- role: worker
+  labels:
+    nodetype: app
+- role: worker
+  labels:
+    nodetype: db

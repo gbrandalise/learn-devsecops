@@ -16,6 +16,10 @@ nodes:
 - role: worker
   labels:
     nodetype: app
+    app: devsecops
+- role: worker
+  labels:
+    nodetype: app
 - role: worker
   labels:
     nodetype: db

@@ -102,8 +102,22 @@ spec:
       labels:
         app: devsecops
     spec:
-      nodeSelector:
-        nodetype: app
+      affinity:
+        nodeAffinity:
+          # preferredDuringSchedulingIgnoredDuringExecution
+          # - weight: 1
+          #   preference:
+          #     matchExpressions:
+          #     - ...
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: nodetype
+                operator: In # In, NotIn, Exists, DoesNotExists, Gt, Lt
+                values:
+                - app
+              - key: app
+                operator: Exists
       initContainers:
       - name: wait-postgres
         image: postgres:17-alpine

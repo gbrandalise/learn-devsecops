@@ -12,6 +12,8 @@ spec:
       labels:
         app: devsecops-node-exporter
     spec:
+      nodeSelector:
+        nodetype: db
       containers:
       - name: devsecops-node-exporter
         image: prom/node-exporter:v1.7.0

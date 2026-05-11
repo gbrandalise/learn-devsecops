@@ -14,6 +14,8 @@ spec:
       labels:
         app: api
     spec:
+      nodeSelector:
+        nodetype: app
       containers:
       - name: api
         image: ghcr.io/gbrandalise/learn-devsecops:pt

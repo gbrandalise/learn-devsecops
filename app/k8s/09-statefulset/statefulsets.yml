@@ -20,6 +20,8 @@ spec:
       labels:
         app: postgresql
     spec:
+      nodeSelector:
+        nodetype: db
       containers:
       - name: postgresql
         image: postgres:17-alpine

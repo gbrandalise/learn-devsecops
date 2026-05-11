@@ -18,6 +18,8 @@ spec:
           labels:
             app: devsecops-job
         spec:
+          nodeSelector:
+            nodetype: db
           containers:
           - name: devsecops-job
             image: ghcr.io/gbrandalise/learn-devsecops:latest

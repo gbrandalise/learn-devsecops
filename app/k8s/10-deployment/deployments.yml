@@ -13,6 +13,8 @@ spec:
       labels:
         app: postgresql-deploy
     spec:
+      nodeSelector:
+        nodetype: db
       containers:
       - name: postgresql-deploy
         image: postgres:17-alpine
@@ -100,6 +102,8 @@ spec:
       labels:
         app: devsecops
     spec:
+      nodeSelector:
+        nodetype: app
       initContainers:
       - name: wait-postgres
         image: postgres:17-alpine
@@ -289,6 +293,8 @@ spec:
       labels:
         app: devsecops-pt
     spec:
+      nodeSelector:
+        nodetype: app
       containers:
       - name: devsecops-pt
         image: ghcr.io/gbrandalise/learn-devsecops:pt

@@ -104,12 +104,14 @@ spec:
     spec:
       affinity:
         nodeAffinity:
-          # preferredDuringSchedulingIgnoredDuringExecution
-          # - weight: 1
+          # preferredDuringSchedulingIgnoredDuringExecution: # Preferred não é obrigatório, se não houver nó com recurso disponível no cluster
+                                                             # que seja compatível com as regras, qualquer outro nó será escolhido
+          # - weight: 1 # De 1 a 100 quanto maior mais preferencial
           #   preference:
           #     matchExpressions:
           #     - ...
-          requiredDuringSchedulingIgnoredDuringExecution:
+          requiredDuringSchedulingIgnoredDuringExecution: # Required é obrigatório, se não houver nó com recurso disponível no cluster
+                                                          # que seja compatível com as regras, o pod ficará aguardando a disponibilidade e não será executado
             nodeSelectorTerms:
             - matchExpressions:
               - key: nodetype

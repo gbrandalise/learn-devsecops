@@ -104,7 +104,7 @@ spec:
     spec:
       tolerations:
       - key: xpto
-        operator: "Equal"
+        operator: "Equal" # Equal, Exists, Gt, Lt
         value: "true"
         effect: NoSchedule # NoSchedule = Não cria novos PODs sem toleration compatível
                            # PreferNoSchedule = Só cria novos PODs, se não houver outra opção compatível

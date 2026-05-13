@@ -103,6 +103,18 @@ spec:
         app: devsecops
     spec:
       affinity:
+        # podAntiAffinity: # Regra de separação entre PODs, ou seja, os PODs deve se manter separados entre os nodes baseado nas regras
+        #   requiredDuringSchedulingIgnoredDuringExecution: # Required irá, obrigatoriamente, seguir as regras de separação,
+        #                                                   # se não for possível, os PODs ficarão em Pending
+        #   - topologyKey: kubernetes.io/hostname # Baseado em qual label dos nodes as regras serão aplicadas, para diferenciação dos mesmos
+        #     labelSelector: # Labels dos PODs a serem considerados na separação
+        #       matchExpressions:
+        #       - ...
+        #   preferredDuringSchedulingIgnoredDuringExecution: # Preferred não é obrigatório, se não conseguir seguir as regras de separação,
+        #                                                    # ainda assim os PODs serão executados seguindo regras de recursos ou próprias do cluster
+        #   - weight: 1 # De 1 a 100 quanto maior mais preferencial
+        #     podAffinityTerm:
+        #       topologyKey: ...
         nodeAffinity:
           # preferredDuringSchedulingIgnoredDuringExecution: # Preferred não é obrigatório, se não houver nó com recurso disponível no cluster
                                                              # que seja compatível com as regras, qualquer outro nó será escolhido
@@ -111,7 +123,7 @@ spec:
           #     matchExpressions:
           #     - ...
           requiredDuringSchedulingIgnoredDuringExecution: # Required é obrigatório, se não houver nó com recurso disponível no cluster
-                                                          # que seja compatível com as regras, o pod ficará aguardando a disponibilidade e não será executado
+                                                          # que seja compatível com as regras, o POD ficará em Pending
             nodeSelectorTerms:
             - matchExpressions:
               - key: nodetype

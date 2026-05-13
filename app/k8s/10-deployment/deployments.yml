@@ -103,6 +103,10 @@ spec:
         app: devsecops
     spec:
       affinity:
+        # podAffinity: # Regra de junção entre PODs, ou seja, os PODs deve se manter juntos entre os nodes baseado nas regras
+        #   requiredDuringSchedulingIgnoredDuringExecution: # Required irá, obrigatoriamente, seguir as regras de junção,
+        #                                                   # se não for possível, os PODs ficarão em Pending
+        #   - topologyKey: ...
         # podAntiAffinity: # Regra de separação entre PODs, ou seja, os PODs deve se manter separados entre os nodes baseado nas regras
         #   requiredDuringSchedulingIgnoredDuringExecution: # Required irá, obrigatoriamente, seguir as regras de separação,
         #                                                   # se não for possível, os PODs ficarão em Pending

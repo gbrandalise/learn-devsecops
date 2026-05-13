@@ -17,6 +17,12 @@ nodes:
   labels:
     nodetype: app
     app: devsecops
+  kubeadmConfigPatches:
+  - |
+    kind: JoinConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        register-with-taints: "xpto=true:NoSchedule"
 - role: worker
   labels:
     nodetype: app

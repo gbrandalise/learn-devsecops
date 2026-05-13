@@ -102,6 +102,13 @@ spec:
       labels:
         app: devsecops
     spec:
+      tolerations:
+      - key: xpto
+        operator: "Equal"
+        value: "true"
+        effect: NoSchedule # NoSchedule = Não cria novos PODs sem toleration compatível
+                           # PreferNoSchedule = Só cria novos PODs, se não houver outra opção compatível
+                           # NoExecute = Não cria novos PODs e deleta PODs em execução em nodes não compatíveis
       affinity:
         # podAffinity: # Regra de junção entre PODs, ou seja, os PODs deve se manter juntos entre os nodes baseado nas regras
         #   requiredDuringSchedulingIgnoredDuringExecution: # Required irá, obrigatoriamente, seguir as regras de junção,
